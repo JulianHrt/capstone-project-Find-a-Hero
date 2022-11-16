@@ -3,6 +3,16 @@ import Image from "next/image";
 import styled from "styled-components";
 
 export default function AdListItems() {
+  data.sort((a, b) => {
+    if (a.createdDate > b.createdDate) {
+      return -1;
+    }
+    if (a.createdDate < b.createdDate) {
+      return 1;
+    }
+    return 0;
+  });
+
   return (
     <>
       {data.map((ad) => {
@@ -44,7 +54,7 @@ export default function AdListItems() {
 
 const ImageContainer = styled.section`
   position: relative;
-  height: 40vh;
+  height: 35vh;
   width: 100%;
 `;
 

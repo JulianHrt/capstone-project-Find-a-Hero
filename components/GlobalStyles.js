@@ -11,6 +11,8 @@ const GlobalStyles = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+
+    h1 {text-align: center;}
 `;
 
 export default GlobalStyles;

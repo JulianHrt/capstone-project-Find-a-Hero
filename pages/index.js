@@ -1,9 +1,9 @@
-import ListPage from "./ListPage";
+import AdListPage from "./AdListPage";
 
 export default function Home() {
   return (
     <>
-      <ListPage />
+      <AdListPage />
     </>
   );
 }

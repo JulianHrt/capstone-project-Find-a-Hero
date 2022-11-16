@@ -1,4 +1,4 @@
-data = [
+const data = [
   {
     userName: "Julian",
     userPictureSrc: "",
@@ -9,7 +9,8 @@ data = [
     adTitle: "Build an App",
     adDescription: "I can be a Hero in building an App for you.",
     adCosts: 99,
-    Categorie: "Technique",
+    category: "Technique",
+    createdDate: "16.11.2022",
   },
   {
     userName: "Lisa",
@@ -21,7 +22,8 @@ data = [
     adTitle: "Make awesome Pictures",
     adDescription: "I can be a Hero in making Pictures for you.",
     adCosts: 99,
-    Categorie: "Events",
+    category: "Events",
+    createdDate: "15.11.2022",
   },
   {
     userName: "Max",
@@ -33,7 +35,8 @@ data = [
     adTitle: "DJing at your Event",
     adDescription: "I can be a Hero in Music for you.",
     adCosts: 99,
-    Categorie: "Events",
+    category: "Events",
+    createdDate: "14.11.2022",
   },
   {
     userName: "Clara",
@@ -45,7 +48,8 @@ data = [
     adTitle: "Help with your Homework",
     adDescription: "I can be a Hero in helping you with your kids homework.",
     adCosts: 99,
-    Categorie: "Education",
+    category: "Education",
+    createdDate: "13.11.2022",
   },
   {
     userName: "Kathrin",
@@ -57,7 +61,8 @@ data = [
     adTitle: "Cleanup your Home",
     adDescription: "I can be a Hero in cleaning up your Home.",
     adCosts: 99,
-    Categorie: "Home",
+    category: "Home",
+    createdDate: "12.11.2022",
   },
   {
     userName: "Heinz",
@@ -69,7 +74,8 @@ data = [
     adTitle: "Cut the lawn",
     adDescription: "I can be a Hero in cut your lawn.",
     adCosts: 99,
-    Categorie: "Garden",
+    category: "Garden",
+    createdDate: "11.11.2022",
   },
   {
     userName: "Carl",
@@ -81,7 +87,8 @@ data = [
     adTitle: "Change your Tires",
     adDescription: "I can be a Hero in changing the tires of your vehicles.",
     adCosts: 99,
-    Categorie: "Vehicles",
+    category: "Vehicles",
+    createdDate: "10.11.2022",
   },
   {
     userName: "Irene",
@@ -93,7 +100,8 @@ data = [
     adTitle: "Baking Cookies for you",
     adDescription: "I can be a Hero in baking something Tasty for you.",
     adCosts: 99,
-    Categorie: "Cooking",
+    category: "Cooking",
+    createdDate: "9.11.2022",
   },
   {
     userName: "Jana",
@@ -105,7 +113,8 @@ data = [
     adTitle: "Babysitting your Kids",
     adDescription: "I can be a Hero in Babysitting for you.",
     adCosts: 99,
-    Categorie: "Care",
+    category: "Care",
+    createdDate: "8.11.2022",
   },
   {
     userName: "Hendrik",
@@ -117,18 +126,35 @@ data = [
     adTitle: "Setup your new Smartphone",
     adDescription: "I can be a Hero in setting up your new Smartphone for you.",
     adCosts: 99,
-    Categorie: "technique",
+    category: "technique",
+    createdDate: "7.11.2022",
   },
   {
     userName: "Carsten",
     userPictureSrc: "",
-    userEmail: "Carste@web.de",
+    userEmail: "Carsten@web.de",
     userPhonenumber: "+1235794144",
     id: 11,
     adPictureSrc: "",
-    adTitle: "help you with moving",
+    adTitle: "Help you with moving",
     adDescription: "I can be a Hero in helping you with your moving.",
     adCosts: 99,
-    Categorie: "Home",
+    category: "Home",
+    createdDate: "6.11.2022",
+  },
+  {
+    userName: "Michael",
+    userPictureSrc: "",
+    userEmail: "Michael@web.de",
+    userPhonenumber: "+1235794144",
+    id: 12,
+    adPictureSrc: "",
+    adTitle: "Coach for dancing",
+    adDescription: "I can be a Hero in helping you learn how to dance.",
+    adCosts: 99,
+    category: "Home",
+    createdDate: "5.11.2022",
   },
 ];
+
+export { data };

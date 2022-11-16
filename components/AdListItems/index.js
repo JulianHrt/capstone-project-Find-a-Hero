@@ -1,54 +1,45 @@
-import { data } from "../utils/data";
 import Image from "next/image";
 import styled from "styled-components";
 
-export default function AdListItems() {
-  data.sort((a, b) => {
-    if (a.createdDate > b.createdDate) {
-      return -1;
-    }
-    if (a.createdDate < b.createdDate) {
-      return 1;
-    }
-    return 0;
-  });
-
+export default function AdListItems({
+  adTitle,
+  tags,
+  adPictureSrc,
+  userName,
+  adCosts,
+  createdDate,
+  userPictureSrc,
+}) {
   return (
-    <>
-      {data.map((ad) => {
-        return (
-          <StyledArticle key={ad.id}>
-            <ImageContainer>
-              <Image
-                src={
-                  ad.adPictureSrc == ""
-                    ? `https://source.unsplash.com/random/?${ad.category}`
-                    : ad.adPictureSrc
-                }
-                fill
-                alt={`Examplephoto of ${ad.adTitle}`}
-              ></Image>
-            </ImageContainer>
-            <h2>{ad.adTitle}</h2>
-            <UserContainer>
-              <UserProfilPhoto
-                src={
-                  ad.adPictureSrc == ""
-                    ? `https://source.unsplash.com/random/?${ad.userName}`
-                    : ad.userPictureSrc
-                }
-                width={40}
-                height={40}
-                alt={`Profilphoto of ${ad.userName}`}
-              ></UserProfilPhoto>
-              <p>{ad.userName}</p>
-            </UserContainer>
-            <Costs>Costs: {ad.adCosts} Karmapoints</Costs>
-            <DateContainer>created at {ad.createdDate}</DateContainer>
-          </StyledArticle>
-        );
-      })}
-    </>
+    <StyledArticle>
+      <ImageContainer>
+        <Image
+          src={
+            adPictureSrc == ""
+              ? `https://source.unsplash.com/random/?${tags}`
+              : adPictureSrc
+          }
+          fill
+          alt={`Examplephoto of ${adTitle}`}
+        ></Image>
+      </ImageContainer>
+      <h2>{adTitle}</h2>
+      <UserContainer>
+        <UserProfilPhoto
+          src={
+            userPictureSrc == ""
+              ? `https://source.unsplash.com/random/?person ${userName}`
+              : userPictureSrc
+          }
+          width={40}
+          height={40}
+          alt={`Profilphoto of ${userName}`}
+        ></UserProfilPhoto>
+        <p>{userName}</p>
+      </UserContainer>
+      <Costs>Costs: {adCosts} Karmapoints</Costs>
+      <DateContainer>created at {createdDate}</DateContainer>
+    </StyledArticle>
   );
 }
 

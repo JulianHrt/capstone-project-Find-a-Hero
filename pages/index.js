@@ -1,3 +1,9 @@
+import AdListPage from "./AdListPage";
+
 export default function Home() {
-  return <h1>Hello Flamingos! 🦩</h1>;
+  return (
+    <>
+      <AdListPage />
+    </>
+  );
 }

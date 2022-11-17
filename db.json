@@ -125,20 +125,7 @@
     "tags": ["babysitting", "kidscare"],
     "createdDate": "2022-10-13"
   },
-  {
-    "userName": "Hendrik",
-    "userPictureSrc": "",
-    "userEmail": "Hendrik@web.de",
-    "userPhonenumber": "+1235794144",
-    "id": "10",
-    "adPictureSrc": "",
-    "adTitle": "Setup your new Smartphone",
-    "adDescription": "I can be a Hero in setting up your new Smartphone for you.",
-    "adCosts": "99",
-    "category": "technology",
-    "tags": ["smartphone", "IOS", "Android"],
-    "createdDate": "2022-10-16"
-  },
+
   {
     "userName": "Carsten",
     "userPictureSrc": "",

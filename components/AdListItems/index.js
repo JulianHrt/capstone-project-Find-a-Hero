@@ -24,22 +24,22 @@ export default function AdListItems({
         ></Image>
       </ImageContainer>
       <h2>{adTitle}</h2>
-      <Description>
-        <UserContainer>
-          <UserProfilPhoto
-            src={
-              userPictureSrc == ""
-                ? `https://source.unsplash.com/random/?person ${userName}`
-                : userPictureSrc
-            }
-            width={40}
-            height={40}
-            alt={`Profilphoto of ${userName}`}
-          ></UserProfilPhoto>
-          <p>{userName}</p>
-        </UserContainer>
-        <Costs> Costs: {adCosts} Karmapoints</Costs>
-      </Description>
+
+      <UserContainer>
+        <UserProfilPhoto
+          src={
+            userPictureSrc == ""
+              ? `https://source.unsplash.com/random/?person ${userName}`
+              : userPictureSrc
+          }
+          width={40}
+          height={40}
+          alt={`Profilphoto of ${userName}`}
+        ></UserProfilPhoto>
+        <p>{userName}</p>
+      </UserContainer>
+      <Costs> Costs: {adCosts} Karmapoints</Costs>
+
       <DateContainer>created at {createdDate}</DateContainer>
     </StyledArticle>
   );
@@ -47,15 +47,15 @@ export default function AdListItems({
 
 const ImageContainer = styled.section`
   position: relative;
-  min-height: 50vw;
   width: 100%;
+  height: 60vw;
 `;
 
 const StyledArticle = styled.article`
   margin: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: ;
+  align-items: center;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
 `;
 
@@ -73,16 +73,8 @@ const UserProfilPhoto = styled(Image)`
 const DateContainer = styled.p`
   color: grey;
   font-size: 0.75rem;
-  text-align: center;
 `;
 
 const Costs = styled.p`
   font-weight: bold;
-`;
-
-const Description = styled.section`
-  display: flex;
-  justify-content: space-between;
-  margin-left: 1rem;
-  margin-right: 1rem;
 `;

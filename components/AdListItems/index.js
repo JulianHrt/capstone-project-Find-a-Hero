@@ -16,7 +16,7 @@ export default function AdListItems({
         <Image
           src={
             adPictureSrc == ""
-              ? `https://source.unsplash.com/random/?${tags}`
+              ? `https://source.unsplash.com/random/1920x1080/?${tags}`
               : adPictureSrc
           }
           fill

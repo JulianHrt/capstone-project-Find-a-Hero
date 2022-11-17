@@ -1,7 +1,9 @@
 import Image from "next/image";
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function AdListItems({
+  id,
   adTitle,
   tags,
   adPictureSrc,
@@ -23,7 +25,9 @@ export default function AdListItems({
           alt={`Examplephoto of ${adTitle}`}
         ></Image>
       </ImageContainer>
-      <h2>{adTitle}</h2>
+      <Link href={`/AdListPage/${id}`}>
+        <h2>{adTitle}</h2>
+      </Link>
 
       <UserContainer>
         <UserProfilPhoto

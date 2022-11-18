@@ -5,7 +5,6 @@ function getAllAds() {
 }
 
 function getAdById(id) {
-  console.log(id);
   return ads.find((ad) => {
     return ad.id === id;
   });

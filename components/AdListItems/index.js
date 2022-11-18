@@ -23,7 +23,7 @@ export default function AdListItems({
           }
           fill
           alt={`Examplephoto of ${adTitle}`}
-        ></Image>
+        />
       </ImageContainer>
       <Link href={`/AdListPage/${id}`}>
         <h2>{adTitle}</h2>
@@ -33,13 +33,13 @@ export default function AdListItems({
         <UserProfilPhoto
           src={
             userPictureSrc == ""
-              ? `https://source.unsplash.com/random/?person ${userName}`
+              ? `https://source.unsplash.com/random/?person${userName}`
               : userPictureSrc
           }
           width={40}
           height={40}
           alt={`Profilphoto of ${userName}`}
-        ></UserProfilPhoto>
+        />
         <p>{userName}</p>
       </UserContainer>
       <Costs> Costs: {adCosts} Karmapoints</Costs>

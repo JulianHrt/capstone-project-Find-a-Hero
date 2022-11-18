@@ -13,7 +13,6 @@ export default function AdDetailsPage() {
   if (error) return <h1>...sorry cannot load ads</h1>;
 
   if (!ad) return <h1>...please wait while loading...</h1>;
-  console.log(ad);
 
   return (
     <StyledArticle>
@@ -21,13 +20,13 @@ export default function AdDetailsPage() {
         <UserProfilPhoto
           src={
             ad.userPictureSrc == ""
-              ? `https://source.unsplash.com/random/?person ${ad.userName}`
+              ? `https://source.unsplash.com/random/?person${ad.userName}`
               : ad.userPictureSrc
           }
           width={40}
           height={40}
           alt={`Profilphoto of ${ad.userName}`}
-        ></UserProfilPhoto>
+        />
         <h2>{ad.userName}´s Ad</h2>
       </UserContainer>{" "}
       <ImageContainer>
@@ -39,7 +38,7 @@ export default function AdDetailsPage() {
           }
           fill
           alt={`Examplephoto of ${ad.adTitle}`}
-        ></Image>
+        />
       </ImageContainer>
       <h3>{ad.adTitle}</h3>
       <Description>
@@ -48,12 +47,12 @@ export default function AdDetailsPage() {
       </Description>
       <Attributes>
         <p>category: {ad.category}</p>
-        <p>
-          Tags:
-          {ad.tags.map((tag) => {
-            return <span> {tag} </span>;
-          })}{" "}
-        </p>
+        <p>Tags: </p>
+        <TagsList>
+          {ad.tags.map((tag, index) => {
+            return <li key={index}> {tag} </li>;
+          })}
+        </TagsList>
         <p>Costs: {ad.adCosts}</p>
       </Attributes>
       <StyledButton type="button" onClick={() => router.push("/")}>
@@ -65,7 +64,6 @@ export default function AdDetailsPage() {
 
 const StyledArticle = styled.article`
   margin: 2rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,7 +92,7 @@ const Description = styled.section`
   border-bottom: 1px solid black;
   padding: 0 1rem 1rem 1rem;
 
-  & p {
+  p {
     font-weight: bold;
   }
 `;
@@ -103,7 +101,7 @@ const Attributes = styled.section`
   align-self: flex-start;
   padding: 0 1rem 1rem 1rem;
 
-  & p {
+  p {
     font-weight: bold;
   }
 `;
@@ -119,4 +117,10 @@ const StyledButton = styled.button`
     background-color: black;
     color: white;
   }
+`;
+
+const TagsList = styled.ul`
+  display: flex;
+  list-style: none;
+  gap: 0.25rem;
 `;

@@ -9,13 +9,15 @@ export default function AdListPage() {
 
   if (!ads) return <h1>...please wait while loading...</h1>;
 
-  ads.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
+  const sortedAds = ads
+    .slice()
+    .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
   const heroCounter = ads.length;
 
   return (
     <>
       <h1>I found {heroCounter} Heroes for you:</h1>
-      {ads.map((ad) => {
+      {sortedAds.map((ad) => {
         return (
           <AdListItems
             key={ad.id}

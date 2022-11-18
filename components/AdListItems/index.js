@@ -28,7 +28,6 @@ export default function AdListItems({
       <Link href={`/AdListPage/${id}`}>
         <h2>{adTitle}</h2>
       </Link>
-
       <UserContainer>
         <UserProfilPhoto
           src={
@@ -42,8 +41,7 @@ export default function AdListItems({
         />
         <p>{userName}</p>
       </UserContainer>
-      <Costs> Costs: {adCosts} Karmapoints</Costs>
-
+      <Costs>for {adCosts} Karmapoints</Costs>
       <DateContainer>created at {createdDate}</DateContainer>
     </StyledArticle>
   );

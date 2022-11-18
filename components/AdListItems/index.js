@@ -1,7 +1,9 @@
 import Image from "next/image";
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function AdListItems({
+  id,
   adTitle,
   tags,
   adPictureSrc,
@@ -21,21 +23,23 @@ export default function AdListItems({
           }
           fill
           alt={`Examplephoto of ${adTitle}`}
-        ></Image>
+        />
       </ImageContainer>
-      <h2>{adTitle}</h2>
+      <Link href={`/AdListPage/${id}`}>
+        <h2>{adTitle}</h2>
+      </Link>
 
       <UserContainer>
         <UserProfilPhoto
           src={
             userPictureSrc == ""
-              ? `https://source.unsplash.com/random/?person ${userName}`
+              ? `https://source.unsplash.com/random/?person${userName}`
               : userPictureSrc
           }
           width={40}
           height={40}
           alt={`Profilphoto of ${userName}`}
-        ></UserProfilPhoto>
+        />
         <p>{userName}</p>
       </UserContainer>
       <Costs> Costs: {adCosts} Karmapoints</Costs>

@@ -1,13 +1,57 @@
-import ads from "../db.json";
+import mongoose, { model, models, Schema } from "mongoose";
+import crypto from "crypto";
 
-function getAllAds() {
+const URI = `mongodb+srv://JulianHirt:${process.env.MONGODB_PASSWORD}@cluster0.v6evwly.mongodb.net/?retryWrites=true&w=majority`;
+
+const adSchema = new Schema({
+  id: String,
+  userName: String,
+  userPictureSrc: String,
+  userEmail: String,
+  userPhonenumber: String,
+  adPictureSrc: String,
+  adTitle: String,
+  adDescription: String,
+  adCosts: String,
+  category: String,
+  tags: Array,
+  createdDate: Object,
+});
+
+const Ad = models.Ad || model("Ad", adSchema);
+
+async function connectWithMongoDB() {
+  await mongoose.connect(URI);
+}
+
+async function getAllAds() {
+  await connectWithMongoDB();
+
+  const ads = await Ad.find({}, { _id: false, __v: false });
+
   return ads;
 }
 
-function getAdById(id) {
-  return ads.find((ad) => {
-    return ad.id === id;
-  });
+async function getAdById(id) {
+  await connectWithMongoDB();
+
+  const ad = await Ad.findOne({ id }, { _id: false, __v: false });
+  return ad;
 }
 
-export { getAllAds, getAdById };
+async function createNewAd(ad) {
+  await connectWithMongoDB();
+
+  const createdAd = await Ad.create({
+    ...ad,
+    id: crypto.randomUUID(),
+  });
+
+  return {
+    ...createdAd.toObject(),
+    _id: undefined,
+    __v: undefined,
+  };
+}
+
+export { getAllAds, getAdById, createNewAd };

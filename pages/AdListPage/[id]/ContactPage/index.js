@@ -3,6 +3,7 @@ import { fetcher } from "../../../../helpers/api";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function ContactPage() {
   const router = useRouter();
@@ -10,7 +11,7 @@ export default function ContactPage() {
 
   const { data: ad, error } = useSWR(`/api/ads/${id}`, fetcher);
 
-  if (error) return <h1>...sorry cannot contactdata</h1>;
+  if (error) return <h1>...sorry cannot load contact data</h1>;
 
   if (!ad) return <h1>...please wait while loading...</h1>;
 
@@ -34,12 +35,7 @@ export default function ContactPage() {
       <a href={`mailto:${ad.userEmail}`}>{ad.userEmail}</a>
       <p>via phone</p>
       <a href={`tel:${ad.userPhonenumber}`}>{ad.userPhonenumber}</a>
-      <StyledButton
-        type="button"
-        onClick={() => router.push(`/AdListPage/${id}/`)}
-      >
-        go back
-      </StyledButton>
+      <StyledLink href={`/AdListPage/${id}`}>go back</StyledLink>
     </StyledArticle>
   );
 }
@@ -69,14 +65,16 @@ const UserProfilPhoto = styled(Image)`
   border-radius: 25px;
 `;
 
-const StyledButton = styled.button`
+const StyledLink = styled(Link)`
   background-color: white;
   border: 1px solid black;
   padding: 0.5rem;
   margin: 1rem;
   align-self: flex-start;
+  text-decoration: none;
+  color: black;
 
-  :hover {
+  :active {
     background-color: black;
     color: white;
   }

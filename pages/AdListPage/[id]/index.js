@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { fetcher } from "../../../helpers/api";
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function AdDetailsPage() {
   const router = useRouter();
@@ -51,22 +52,15 @@ export default function AdDetailsPage() {
         <p>Tags: </p>
         <TagsList>
           {ad.tags.map((tag, index) => {
-            return <TagItem key={index}> {tag} </TagItem>;
+            return <TagItem key={index + tag}> {tag} </TagItem>;
           })}
         </TagsList>
         <p>Costs: {ad.adCosts}</p>
       </Attributes>
-      <ButtonContainer>
-        <StyledButton type="button" onClick={() => router.push("/")}>
-          go back
-        </StyledButton>
-        <StyledButton
-          type="button"
-          onClick={() => router.push(`/AdListPage/${id}/ContactPage`)}
-        >
-          Book now
-        </StyledButton>
-      </ButtonContainer>
+      <FlexWrapper>
+        <StyledLink href="/AdListPage/">go back</StyledLink>
+        <StyledLink href={`/AdListPage/${id}/ContactPage`}>Book now</StyledLink>
+      </FlexWrapper>
     </StyledArticle>
   );
 }
@@ -119,12 +113,14 @@ const Attributes = styled.section`
   }
 `;
 
-const StyledButton = styled.button`
+const StyledLink = styled(Link)`
   background-color: white;
   border: 1px solid black;
   padding: 0.5rem;
+  text-decoration: none;
+  color: black;
 
-  :hover {
+  :active {
     background-color: black;
     color: white;
   }
@@ -156,7 +152,7 @@ const CategoryItem = styled.p`
   text-align: center;
 `;
 
-const ButtonContainer = styled.section`
+const FlexWrapper = styled.section`
   display: flex;
   justify-content: space-between;
   margin: 0 1rem 1rem 1rem;

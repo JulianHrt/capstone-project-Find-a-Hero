@@ -1,4 +1,4 @@
-import AdListItems from "../../components/AdListItems";
+import AdListItem from "../../components/AdListItem";
 import useSWR from "swr";
 import { fetcher } from "../../helpers/api";
 
@@ -19,7 +19,7 @@ export default function AdListPage() {
       <h1>I found {heroCounter} Heroes for you:</h1>
       {sortedAds.map((ad) => {
         return (
-          <AdListItems
+          <AdListItem
             key={ad.id}
             id={ad.id}
             adTitle={ad.adTitle}

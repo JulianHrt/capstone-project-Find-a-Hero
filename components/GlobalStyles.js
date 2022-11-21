@@ -13,6 +13,8 @@ const GlobalStyles = createGlobalStyle`
     }
 
     h1 {text-align: center; margin: 2rem;}
+
+    
 `;
 
 export default GlobalStyles;

@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { fetcher } from "../../../helpers/api";
 import styled from "styled-components";
+import Link from "next/link";
 
 export default function AdDetailsPage() {
   const router = useRouter();
@@ -10,7 +11,7 @@ export default function AdDetailsPage() {
 
   const { data: ad, error } = useSWR(`/api/ads/${id}`, fetcher);
 
-  if (error) return <h1>...sorry cannot load ads</h1>;
+  if (error) return <h1>...sorry cannot load ad details</h1>;
 
   if (!ad) return <h1>...please wait while loading...</h1>;
 
@@ -28,7 +29,7 @@ export default function AdDetailsPage() {
           alt={`Profilphoto of ${ad.userName}`}
         />
         <h2>{ad.userName}´s Ad</h2>
-      </UserContainer>{" "}
+      </UserContainer>
       <ImageContainer>
         <Image
           src={
@@ -40,24 +41,26 @@ export default function AdDetailsPage() {
           alt={`Examplephoto of ${ad.adTitle}`}
         />
       </ImageContainer>
-      <h3>{ad.adTitle}</h3>
+      <AdTitle>{ad.adTitle}</AdTitle>
       <Description>
         <p>Task description:</p>
         {ad.adDescription}
       </Description>
       <Attributes>
-        <p>category: {ad.category}</p>
+        <p>category:</p>
+        <CategoryItem> {ad.category}</CategoryItem>
         <p>Tags: </p>
         <TagsList>
-          {ad.tags.map((tag, index) => {
-            return <li key={index}> {tag} </li>;
+          {ad.tags.map((tag) => {
+            return <TagItem key={tag}> {tag} </TagItem>;
           })}
         </TagsList>
         <p>Costs: {ad.adCosts}</p>
       </Attributes>
-      <StyledButton type="button" onClick={() => router.push("/")}>
-        go back
-      </StyledButton>
+      <FlexWrapper>
+        <StyledLink href="/AdListPage/">go back</StyledLink>
+        <StyledLink href={`/AdListPage/${id}/ContactPage`}>Book now</StyledLink>
+      </FlexWrapper>
     </StyledArticle>
   );
 }
@@ -66,7 +69,7 @@ const StyledArticle = styled.article`
   margin: 2rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
+
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
 `;
 
@@ -75,6 +78,11 @@ const UserContainer = styled.section`
   gap: 1em;
   font-weight: bold;
   align-items: center;
+  padding: 0 0 0 1rem;
+`;
+
+const AdTitle = styled.h3`
+  align-self: center;
 `;
 
 const UserProfilPhoto = styled(Image)`
@@ -98,7 +106,6 @@ const Description = styled.section`
 `;
 
 const Attributes = styled.section`
-  align-self: flex-start;
   padding: 0 1rem 1rem 1rem;
 
   p {
@@ -106,14 +113,14 @@ const Attributes = styled.section`
   }
 `;
 
-const StyledButton = styled.button`
+const StyledLink = styled(Link)`
   background-color: white;
   border: 1px solid black;
   padding: 0.5rem;
-  margin: 1rem;
-  align-self: flex-start;
+  text-decoration: none;
+  color: black;
 
-  :hover {
+  :active {
     background-color: black;
     color: white;
   }
@@ -121,6 +128,32 @@ const StyledButton = styled.button`
 
 const TagsList = styled.ul`
   display: flex;
+  justify-content: flex-start;
   list-style: none;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+`;
+
+const TagItem = styled.li`
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+`;
+
+const CategoryItem = styled.p`
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-align: center;
+`;
+
+const FlexWrapper = styled.section`
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1rem 1rem 1rem;
 `;

@@ -51,8 +51,8 @@ export default function AdDetailsPage() {
         <CategoryItem> {ad.category}</CategoryItem>
         <p>Tags: </p>
         <TagsList>
-          {ad.tags.map((tag, index) => {
-            return <TagItem key={index + tag}> {tag} </TagItem>;
+          {ad.tags.map((tag) => {
+            return <TagItem key={tag}> {tag} </TagItem>;
           })}
         </TagsList>
         <p>Costs: {ad.adCosts}</p>

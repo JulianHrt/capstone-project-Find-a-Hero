@@ -54,4 +54,12 @@ async function createNewAd(ad) {
   };
 }
 
-export { getAllAds, getAdById, createNewAd };
+async function updateAdById(id, ad) {
+  await connectWithMongoDB();
+
+  await Ad.updateOne({ id }, ad);
+  const updatedAd = await getAdById(id);
+  return updatedAd;
+}
+
+export { getAllAds, getAdById, createNewAd, updateAdById };

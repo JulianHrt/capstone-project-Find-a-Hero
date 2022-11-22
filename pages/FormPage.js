@@ -1,6 +1,4 @@
 import AddAd from "../components/AddAd";
-
-import styled from "styled-components";
 import Router from "next/router";
 
 export default function FormPage() {
@@ -24,7 +22,7 @@ export default function FormPage() {
   return (
     <>
       <h1>Be a Hero for the community</h1>
-      <AddAd onSubmit={sendAd} />
+      <AddAd onSubmit={sendAd} onGoBack={"/AdListPage"} />
     </>
   );
 }

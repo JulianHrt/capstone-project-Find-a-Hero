@@ -19,7 +19,13 @@ export default function AddAd({ onSubmit }) {
         <legend>user information</legend>
         <label htmlFor="userName">
           *your name:
-          <input type="text" name="userName" id="userName" required></input>
+          <input
+            type="text"
+            name="userName"
+            id="userName"
+            pattern=".*[\S]+.*"
+            required
+          ></input>
         </label>
         <label htmlFor="userPictureSrc">
           link your profilpicture:
@@ -27,7 +33,7 @@ export default function AddAd({ onSubmit }) {
             type="text"
             name="userPictureSrc"
             id="userPictureSrc"
-            placeholder="https://yourprofilpicture.de/"
+            placeholder="like this https://image.unsplash.de/"
           ></input>
         </label>
         <label htmlFor="userEmail">
@@ -52,12 +58,18 @@ export default function AddAd({ onSubmit }) {
             type="text"
             name="adPictureSrc"
             id="adPictureSrc"
-            placeholder="https://youradtitlepicture.de/"
+            placeholder="like this https://image.unsplash.de/"
           ></input>
         </label>
         <label htmlFor="adTitle">
           *type in your adtitle:
-          <input type="text" name="adTitle" id="adTitle" required></input>
+          <input
+            type="text"
+            name="adTitle"
+            id="adTitle"
+            pattern=".*[\S]+.*"
+            required
+          ></input>
         </label>
         <label htmlFor="adDescription">
           what can make you done?
@@ -65,7 +77,10 @@ export default function AddAd({ onSubmit }) {
             type="text"
             name="adDescription"
             id="adDescription"
-            placeholder="i can be a Hero in..."
+            pattern=".*[\S]+.*"
+            defaultValue={"I can be a hero in ..."}
+            minLength={5}
+            rows={4}
           ></textarea>
         </label>
         <label htmlFor="adCosts">
@@ -89,7 +104,13 @@ export default function AddAd({ onSubmit }) {
         </label>
         <label htmlFor="tags">
           *describing hashtags for your ad:
-          <input type="text" name="tags" id="tags" required></input>
+          <input
+            type="text"
+            name="tags"
+            id="tags"
+            pattern=".*[\S]+.*"
+            required
+          ></input>
         </label>
       </StyledFieldset>
       <FlexWrapper>

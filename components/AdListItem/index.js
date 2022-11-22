@@ -12,6 +12,7 @@ export default function AdListItem({
   createdDate,
   userPictureSrc,
 }) {
+  const editedCreatedDate = new Date(createdDate).toLocaleDateString();
   return (
     <StyledArticle>
       <ImageContainer>
@@ -42,7 +43,7 @@ export default function AdListItem({
         <p>{userName}</p>
       </UserContainer>
       <Costs>for {adCosts} Karmapoints</Costs>
-      <DateContainer>created at {createdDate}</DateContainer>
+      <DateContainer>created at {editedCreatedDate}</DateContainer>
     </StyledArticle>
   );
 }

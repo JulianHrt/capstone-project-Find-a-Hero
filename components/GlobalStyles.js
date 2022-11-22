@@ -12,7 +12,7 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
     }
 
-    h1 {text-align: center; margin: 2rem;}
+    h1,h2,h3 {text-align: center; margin: 1rem;}
 
     
 `;

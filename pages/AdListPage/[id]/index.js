@@ -29,6 +29,7 @@ export default function AdDetailsPage() {
           alt={`Profilphoto of ${ad.userName}`}
         />
         <h2>{ad.userName}´s Ad</h2>
+        <StyledLink href={`/AdListPage/${id}/EditAd/`}>edit</StyledLink>
       </UserContainer>
       <ImageContainer>
         <Image
@@ -55,7 +56,7 @@ export default function AdDetailsPage() {
             return <TagItem key={tag}> {tag} </TagItem>;
           })}
         </TagsList>
-        <p>Costs: {ad.adCosts}</p>
+        <p>Costs: {ad.adCosts} Karmapoints</p>
       </Attributes>
       <FlexWrapper>
         <StyledLink href="/AdListPage/">go back</StyledLink>
@@ -78,7 +79,8 @@ const UserContainer = styled.section`
   gap: 1em;
   font-weight: bold;
   align-items: center;
-  padding: 0 0 0 1rem;
+  justify-content: space-between;
+  padding: 0 1rem 0 1rem;
 `;
 
 const AdTitle = styled.h3`

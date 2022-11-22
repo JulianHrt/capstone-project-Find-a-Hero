@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
-export default function AddAd({ onSubmit }) {
+export default function AddAd({ onSubmit, inputValue, onGoBack }) {
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -24,6 +25,7 @@ export default function AddAd({ onSubmit }) {
             name="userName"
             id="userName"
             pattern=".*[\S]+.*"
+            defaultValue={inputValue === undefined ? "" : inputValue.userName}
             required
           ></input>
         </label>
@@ -33,12 +35,21 @@ export default function AddAd({ onSubmit }) {
             type="text"
             name="userPictureSrc"
             id="userPictureSrc"
+            defaultValue={
+              inputValue === undefined ? "" : inputValue.userPictureSrc
+            }
             placeholder="like this https://image.unsplash.de/"
           ></input>
         </label>
         <label htmlFor="userEmail">
           *your email:
-          <input type="email" name="userEmail" id="userEmail" required></input>
+          <input
+            type="email"
+            name="userEmail"
+            id="userEmail"
+            defaultValue={inputValue === undefined ? "" : inputValue.userEmail}
+            required
+          ></input>
         </label>
         <label htmlFor="userPhonenumber">
           *your phonenumber:
@@ -46,6 +57,9 @@ export default function AddAd({ onSubmit }) {
             type="number"
             name="userPhonenumber"
             id="userPhonenumber"
+            defaultValue={
+              inputValue === undefined ? "" : inputValue.userPhonenumber
+            }
             required
           ></input>
         </label>
@@ -58,6 +72,9 @@ export default function AddAd({ onSubmit }) {
             type="text"
             name="adPictureSrc"
             id="adPictureSrc"
+            defaultValue={
+              inputValue === undefined ? "" : inputValue.adPictureSrc
+            }
             placeholder="like this https://image.unsplash.de/"
           ></input>
         </label>
@@ -68,6 +85,7 @@ export default function AddAd({ onSubmit }) {
             name="adTitle"
             id="adTitle"
             pattern=".*[\S]+.*"
+            defaultValue={inputValue === undefined ? "" : inputValue.adTitle}
             required
           ></input>
         </label>
@@ -78,18 +96,34 @@ export default function AddAd({ onSubmit }) {
             name="adDescription"
             id="adDescription"
             pattern=".*[\S]+.*"
-            defaultValue={"I can be a hero in ..."}
+            defaultValue={
+              inputValue === undefined
+                ? "I can be a hero in ..."
+                : inputValue.adDescription
+            }
             minLength={5}
             rows={4}
           ></textarea>
         </label>
         <label htmlFor="adCosts">
           *costs of your ad:
-          <input type="number" name="adCosts" id="adCosts" required></input>
+          <input
+            type="number"
+            name="adCosts"
+            id="adCosts"
+            defaultValue={inputValue === undefined ? "" : inputValue.adCosts}
+            required
+          ></input>
         </label>
         <label htmlFor="category">
           *category:
-          <select type="text" name="category" id="category" required>
+          <select
+            type="text"
+            name="category"
+            id="category"
+            defaultValue={inputValue === undefined ? "" : inputValue.category}
+            required
+          >
             <option value="">---select a category for your ad---</option>
             <option value="care">care</option>
             <option value="coaching">coaching</option>
@@ -109,12 +143,13 @@ export default function AddAd({ onSubmit }) {
             name="tags"
             id="tags"
             pattern=".*[\S]+.*"
+            defaultValue={inputValue === undefined ? "" : inputValue.tags}
             required
           ></input>
         </label>
       </StyledFieldset>
       <FlexWrapper>
-        <StyledLink href="/AdListPage/">Go Back</StyledLink>
+        <StyledLink href={onGoBack}>Go Back</StyledLink>
         <StyledButton type="submit">Save</StyledButton>
       </FlexWrapper>
     </StyledForm>

@@ -104,9 +104,10 @@ export default function AddAd({ onSubmit }) {
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  margin: 2rem;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
   padding: 0.5rem;
+  gap: 1rem;
 `;
 
 const StyledButton = styled.button`

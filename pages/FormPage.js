@@ -22,16 +22,9 @@ export default function FormPage() {
   }
 
   return (
-    <MainFlexWrapper>
+    <>
       <h1>Be a Hero for the community</h1>
       <AddAd onSubmit={sendAd} />
-    </MainFlexWrapper>
+    </>
   );
 }
-
-const MainFlexWrapper = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1rem;
-`;

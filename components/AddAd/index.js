@@ -8,7 +8,6 @@ export default function AddAd({ onSubmit }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    console.log(data);
     onSubmit(data);
 
     return data;

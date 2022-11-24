@@ -5,7 +5,6 @@ import Icons from "../Icons";
 
 export default function Footer() {
   const { pathname } = useRouter();
-  console.log(pathname);
 
   return (
     <StyledNav>

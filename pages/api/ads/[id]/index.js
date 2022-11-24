@@ -1,4 +1,4 @@
-import { getAdById, updateAdById } from "../../../../helpers/db";
+import { getAdById, updateAdById, deleteAdById } from "../../../../helpers/db";
 
 export default async function handler(request, response) {
   const { id } = request.query;
@@ -9,7 +9,10 @@ export default async function handler(request, response) {
     const ad = JSON.parse(request.body);
     const updatedAd = await updateAdById(id, ad);
     response.status(200).json(updatedAd);
+  } else if (request.method === "DELETE") {
+    const ad = await deleteAdById(id);
+    response.status(200).json(ad);
   } else {
-    response.status(405).setHeader("Allow", ["GET", "PATCH"]).send();
+    response.status(405).setHeader("Allow", ["GET", "PATCH", "DELETE"]).send();
   }
 }

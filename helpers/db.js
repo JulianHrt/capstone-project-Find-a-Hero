@@ -62,4 +62,12 @@ async function updateAdById(id, ad) {
   return updatedAd;
 }
 
-export { getAllAds, getAdById, createNewAd, updateAdById };
+async function deleteAdById(id) {
+  await connectWithMongoDB();
+
+  const ad = await getAdById(id);
+  await Ad.deleteOne({ id });
+  return ad;
+}
+
+export { getAllAds, getAdById, createNewAd, updateAdById, deleteAdById };

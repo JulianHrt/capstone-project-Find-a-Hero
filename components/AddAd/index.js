@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
 export default function AddAd({ onSubmit, inputValue, onGoBack }) {
   function handleSubmit(event) {
@@ -159,7 +158,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  margin: 2rem;
+  width: 85vw;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
   padding: 0.5rem;
   gap: 1rem;

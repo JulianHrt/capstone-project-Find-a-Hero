@@ -1,18 +1,25 @@
 import AdListItem from "../../components/AdListItem";
 import useSWR from "swr";
 import { fetcher } from "../../helpers/api";
+import { useRouter } from "next/router";
 
-export default function AdListPage() {
+export default function AdListPage({ isFilterByCategory }) {
   const { data: ads, error } = useSWR("/api/ads/", fetcher);
 
   if (error) return <h1>...sorry cannot load ads</h1>;
 
   if (!ads) return <h1>...please wait while loading...</h1>;
 
-  const sortedAds = ads
+  const AdsFilterByCategory = ads.filter((ad) => {
+    return ad.category === isFilterByCategory;
+  });
+
+  const choosenAds = isFilterByCategory === "" ? ads : AdsFilterByCategory;
+
+  const sortedAds = choosenAds
     .slice()
     .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
-  const heroCounter = ads.length;
+  const heroCounter = sortedAds.length;
 
   return (
     <>

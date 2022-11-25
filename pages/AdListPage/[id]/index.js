@@ -58,7 +58,7 @@ export default function AdDetailsPage() {
       </UserContainer>
       {isModalShown && (
         <StyledModal>
-          <p>Are you sure that you want delete this ad? </p>
+          <p>Are you sure that you want to delete this ad? </p>
           <ButtonWrapper>
             <StyledButton type="button" onClick={deleteAd}>
               yes

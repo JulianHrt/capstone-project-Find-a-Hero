@@ -28,7 +28,7 @@ export default function ContactPage() {
           height={40}
           alt={`Profilphoto of ${ad.userName}`}
         />
-        <h2>{ad.userName}´s Ad</h2>
+        <UserName>{ad.userName}´s Ad</UserName>
       </UserContainer>
       <h3>You can reach your Hero</h3>
       <p>via mail</p>
@@ -41,11 +41,11 @@ export default function ContactPage() {
 }
 
 const StyledArticle = styled.article`
-  margin: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+  width: 85vw;
 
   p {
     font-weight: bold;
@@ -54,15 +54,20 @@ const StyledArticle = styled.article`
 
 const UserContainer = styled.section`
   display: flex;
-  gap: 1em;
   font-weight: bold;
   align-items: center;
   align-self: flex-start;
-  padding: 0 0 0 1rem;
+  justify-content: space-between;
+  padding: 0 1rem 0 1rem;
 `;
 
 const UserProfilPhoto = styled(Image)`
   border-radius: 25px;
+`;
+
+const UserName = styled.h2`
+  text-align: center;
+  padding: 0 0 0 0.5rem;
 `;
 
 const StyledLink = styled(Link)`

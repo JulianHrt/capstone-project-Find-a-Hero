@@ -26,9 +26,9 @@ export default function AdListItem({
           alt={`Examplephoto of ${adTitle}`}
         />
       </ImageContainer>
-      <Link href={`/AdListPage/${id}`}>
+      <AdTitle href={`/AdListPage/${id}`}>
         <h2>{adTitle}</h2>
-      </Link>
+      </AdTitle>
       <UserContainer>
         <UserProfilPhoto
           src={
@@ -55,10 +55,10 @@ const ImageContainer = styled.section`
 `;
 
 const StyledArticle = styled.article`
-  margin: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 85vw;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
 `;
 
@@ -80,4 +80,12 @@ const DateContainer = styled.p`
 
 const Costs = styled.p`
   font-weight: bold;
+`;
+
+const AdTitle = styled(Link)`
+  padding: 0 1rem 0 1rem;
+
+  h2 {
+    text-align: center;
+  }
 `;

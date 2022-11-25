@@ -1,18 +1,17 @@
 import GlobalStyles from "../components/GlobalStyles";
 import Layout from "../components/Layout";
-import { useState } from "react";
+import { useLocalStorage } from "../helpers/hooks";
 
 function MyApp({ Component, pageProps }) {
-  const [isFilterByCategory, setFilterByCategory] = useState("");
+  const [lastSearched, setLastSearched] = useLocalStorage(
+    "lastsearched",
+    "all"
+  );
   return (
     <>
-      <Layout>
+      <Layout lastSearched={lastSearched}>
         <GlobalStyles />
-        <Component
-          {...pageProps}
-          isFilterByCategory={isFilterByCategory}
-          setFilterByCategory={setFilterByCategory}
-        />
+        <Component {...pageProps} setLastSearched={setLastSearched} />
       </Layout>
     </>
   );

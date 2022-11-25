@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function ContactPage() {
   const router = useRouter();
-  const { id } = router.query;
+  const { category, id } = router.query;
 
   const { data: ad, error } = useSWR(`/api/ads/${id}`, fetcher);
 
@@ -35,7 +35,7 @@ export default function ContactPage() {
       <a href={`mailto:${ad.userEmail}`}>{ad.userEmail}</a>
       <p>via phone</p>
       <a href={`tel:${ad.userPhonenumber}`}>{ad.userPhonenumber}</a>
-      <StyledLink href={`/AdListPage/${id}`}>go back</StyledLink>
+      <StyledLink href={`/${category}/${id}`}>go back</StyledLink>
     </StyledArticle>
   );
 }

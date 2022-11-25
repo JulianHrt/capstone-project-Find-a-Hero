@@ -1,10 +1,11 @@
 import Link from "next/link";
 import styled from "styled-components";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import Icons from "../Icons";
 
-export default function Footer() {
+export default function Footer({ lastSearched }) {
   const { pathname } = useRouter();
+  console.log(lastSearched);
 
   return (
     <StyledNav>
@@ -14,10 +15,10 @@ export default function Footer() {
           color={pathname === "/" ? "#BF382C" : "darkblue"}
         />
       </Link>
-      <Link href="/AdListPage">
+      <Link href={`/${lastSearched}`}>
         <Icons
           variant="results"
-          color={pathname.startsWith("/AdListPage") ? "#BF382C" : "darkblue"}
+          color={pathname.startsWith("/[category]") ? "#BF382C" : "darkblue"}
         />
       </Link>
       <Link href="/FormPage">

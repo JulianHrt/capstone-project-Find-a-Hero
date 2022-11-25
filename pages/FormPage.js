@@ -1,7 +1,8 @@
+import { useRouter } from "next/router";
 import AddAd from "../components/AddAd";
-import Router from "next/router";
 
 export default function FormPage() {
+  const router = useRouter();
   const currentDate = new Date();
 
   async function sendAd(ad) {
@@ -16,13 +17,13 @@ export default function FormPage() {
       body: JSON.stringify(newAd),
     });
 
-    Router.push("/AdListPage");
+    router.back();
   }
 
   return (
     <>
       <h1>Be a Hero for the community</h1>
-      <AddAd onSubmit={sendAd} onGoBack={"/AdListPage"} />
+      <AddAd onSubmit={sendAd} onGoBack={() => router.back()} />
     </>
   );
 }

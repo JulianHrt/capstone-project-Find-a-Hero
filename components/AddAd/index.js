@@ -126,7 +126,11 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
           >
             <option value="">---select a category for your ad---</option>
             {categories.map((category) => {
-              return <option value={category}>{category}</option>;
+              return (
+                <option key={category} value={category}>
+                  {category}
+                </option>
+              );
             })}
           </select>
         </label>
@@ -143,7 +147,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
         </label>
       </StyledFieldset>
       <FlexWrapper>
-        <StyledLink href={onGoBack}>Go Back</StyledLink>
+        <StyledButton onClick={onGoBack}>Go Back</StyledButton>
         <StyledButton type="submit">Save</StyledButton>
       </FlexWrapper>
     </StyledForm>
@@ -160,22 +164,6 @@ const StyledForm = styled.form`
 `;
 
 const StyledButton = styled.button`
-  background-color: white;
-  border: 1px solid black;
-  padding: 0.5rem;
-  text-decoration: none;
-  color: black;
-  min-width: 40%;
-  text-align: center;
-  font-size: 1rem;
-
-  :active {
-    background-color: black;
-    color: white;
-  }
-`;
-
-const StyledLink = styled(Link)`
   background-color: white;
   border: 1px solid black;
   padding: 0.5rem;

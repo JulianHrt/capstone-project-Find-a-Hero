@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Icons from "../../../components/Icons";
 
-export default function AdDetailsPage() {
+export default function AdDetailsPage({ isUser }) {
   const [isModalShown, setModalShown] = useState(false);
 
   const router = useRouter();
@@ -46,15 +46,21 @@ export default function AdDetailsPage() {
             : ad.userName + "`s"}{" "}
           Ad
         </UserName>
-        <Link href={`/${category}/${id}/EditAd/`}>
-          <Icons variant="edit" color="black" />
-        </Link>
-        <ButtonAsIcon
-          type="button"
-          onClick={() => setModalShown(!isModalShown)}
-        >
-          <Icons variant="delete" color="black" />
-        </ButtonAsIcon>
+        {isUser.id === ad.id ? (
+          <>
+            <Link href={`/${category}/${id}/EditAd/`}>
+              <Icons variant="edit" color="black" />
+            </Link>
+            <ButtonAsIcon
+              type="button"
+              onClick={() => setModalShown(!isModalShown)}
+            >
+              <Icons variant="delete" color="black" />
+            </ButtonAsIcon>
+          </>
+        ) : (
+          ""
+        )}
       </UserContainer>
       {isModalShown && (
         <StyledModal>

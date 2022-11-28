@@ -1,0 +1,47 @@
+[
+  {
+    "userName": "Julian",
+    "password": "0000",
+    "userId": "1",
+    "karmaAccount": "100",
+    "userPictureSrc": "",
+    "userEmail": "Julian@web.de",
+    "userPhonenumber": "123456789"
+  },
+  {
+    "userName": "Kathrin",
+    "password": "0000",
+    "userId": "2",
+    "karmaAccount": "100",
+    "userPictureSrc": "",
+    "userEmail": "Kathrin@web.de",
+    "userPhonenumber": "123456789"
+  },
+  {
+    "userName": "Jana",
+    "password": "0000",
+    "userId": "3",
+    "karmaAccount": "100",
+    "userPictureSrc": "",
+    "userEmail": "Jana@web.de",
+    "userPhonenumber": "123456789"
+  },
+  {
+    "userName": "Timo",
+    "password": "0000",
+    "userId": "3",
+    "karmaAccount": "100",
+    "userPictureSrc": "",
+    "userEmail": "Timo@web.de",
+    "userPhonenumber": "123456789"
+  },
+  {
+    "userName": "Max",
+    "password": "0000",
+    "userId": "4",
+    "karmaAccount": "100",
+    "userPictureSrc": "",
+    "userEmail": "Max@web.de",
+    "userPhonenumber": "123456789"
+  }
+]

@@ -1,15 +1,6 @@
 import styled from "styled-components";
 
-export default function LoginModal() {
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-
-    return data;
-  }
-
+export default function LoginModal({ handleSubmit }) {
   return (
     <StyledModal>
       <StyledForm onSubmit={handleSubmit}>

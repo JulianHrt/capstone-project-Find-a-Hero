@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Router, { useRouter } from "next/router";
 import Icons from "../Icons";
 
-export default function Footer({ lastSearched }) {
+export default function Footer({ lastSearched, isUser }) {
   const { pathname } = useRouter();
 
   return (
@@ -20,12 +20,14 @@ export default function Footer({ lastSearched }) {
           color={pathname.startsWith("/[category]") ? "#BF382C" : "darkblue"}
         />
       </Link>
-      <Link href="/FormPage">
-        <Icons
-          variant="add"
-          color={pathname === "/FormPage" ? "#BF382C" : "darkblue"}
-        />
-      </Link>
+      {isUser.loggedIn && (
+        <Link href="/FormPage">
+          <Icons
+            variant="add"
+            color={pathname === "/FormPage" ? "#BF382C" : "darkblue"}
+          />
+        </Link>
+      )}
     </StyledNav>
   );
 }

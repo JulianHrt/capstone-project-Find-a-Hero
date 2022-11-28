@@ -6,7 +6,7 @@ import AddAd from "../../../../components/AddAd";
 export default function EditAd() {
   const currentDate = new Date();
   const router = useRouter();
-  const { id } = router.query;
+  const { category, id } = router.query;
 
   const { data: ad, error } = useSWR(`/api/ads/${id}`, fetcher);
 
@@ -26,7 +26,7 @@ export default function EditAd() {
       body: JSON.stringify(newAd),
     });
 
-    router.push(`/AdListPage/${id}`);
+    router.push(`/${category}/${id}`);
   }
 
   return (
@@ -35,7 +35,7 @@ export default function EditAd() {
       <AddAd
         onSubmit={updateAd}
         inputValue={ad}
-        onGoBack={`/AdListPage/${id}`}
+        onGoBack={() => router.back()}
       />
     </>
   );

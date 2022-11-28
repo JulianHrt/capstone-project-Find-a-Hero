@@ -11,7 +11,7 @@ export default function AdDetailsPage() {
   const [isModalShown, setModalShown] = useState(false);
 
   const router = useRouter();
-  const { id } = router.query;
+  const { category, id } = router.query;
 
   const { data: ad, error } = useSWR(`/api/ads/${id}`, fetcher);
 
@@ -24,7 +24,7 @@ export default function AdDetailsPage() {
       method: "DELETE",
     });
 
-    router.push("/AdListPage");
+    router.back();
   }
 
   return (
@@ -46,7 +46,7 @@ export default function AdDetailsPage() {
             : ad.userName + "`s"}{" "}
           Ad
         </UserName>
-        <Link href={`/AdListPage/${id}/EditAd/`}>
+        <Link href={`/${category}/${id}/EditAd/`}>
           <Icons variant="edit" color="black" />
         </Link>
         <ButtonAsIcon
@@ -58,7 +58,7 @@ export default function AdDetailsPage() {
       </UserContainer>
       {isModalShown && (
         <StyledModal>
-          <p>Are you sure that you want delete this ad? </p>
+          <p>Are you sure that you want to delete this ad? </p>
           <ButtonWrapper>
             <StyledButton type="button" onClick={deleteAd}>
               yes
@@ -100,8 +100,10 @@ export default function AdDetailsPage() {
         <p>Costs: {ad.adCosts} Karmapoints</p>
       </Attributes>
       <FlexWrapper>
-        <StyledLink href="/AdListPage/">go back</StyledLink>
-        <StyledLink href={`/AdListPage/${id}/ContactPage`}>Book now</StyledLink>
+        <StyledLink href={`/${category}`}>go back</StyledLink>
+        <StyledLink href={`/${category}/${id}/ContactPage`}>
+          Book now
+        </StyledLink>
       </FlexWrapper>
     </StyledArticle>
   );
@@ -179,7 +181,9 @@ const StyledButton = styled.button`
   border: 1px solid black;
   text-decoration: none;
   color: black;
-  width: 30%;
+  min-width: 40%;
+  font-size: 1rem;
+  text-align: center;
 
   :active {
     background-color: black;

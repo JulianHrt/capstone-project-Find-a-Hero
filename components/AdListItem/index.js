@@ -11,6 +11,7 @@ export default function AdListItem({
   adCosts,
   createdDate,
   userPictureSrc,
+  category,
 }) {
   const editedCreatedDate = new Date(createdDate).toLocaleDateString();
   return (
@@ -26,7 +27,7 @@ export default function AdListItem({
           alt={`Examplephoto of ${adTitle}`}
         />
       </ImageContainer>
-      <AdTitle href={`/AdListPage/${id}`}>
+      <AdTitle href={`/${category}/${id}`}>
         <h2>{adTitle}</h2>
       </AdTitle>
       <UserContainer>
@@ -59,6 +60,7 @@ const StyledArticle = styled.article`
   flex-direction: column;
   align-items: center;
   width: 85vw;
+  margin-bottom: 1rem;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
 `;
 

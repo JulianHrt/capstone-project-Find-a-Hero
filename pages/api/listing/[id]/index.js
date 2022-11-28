@@ -1,4 +1,8 @@
-import { getAdById, updateAdById, deleteAdById } from "../../../../helpers/db";
+import {
+  getAdById,
+  updateAdById,
+  deleteAdById,
+} from "../../../../services/adServices";
 
 export default async function handler(request, response) {
   const { id } = request.query;

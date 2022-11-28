@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Link from "next/link";
-import { categories } from "../../utils/categories";
+import { categories } from "../../helpers/categories";
 
 export default function AddAd({ onSubmit, inputValue, onGoBack }) {
   function handleSubmit(event) {

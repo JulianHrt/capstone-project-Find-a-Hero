@@ -9,7 +9,7 @@ export default function ContactPage() {
   const router = useRouter();
   const { category, id } = router.query;
 
-  const { data: ad, error } = useSWR(`/api/ads/${id}`, fetcher);
+  const { data: ad, error } = useSWR(`/api/listing/${id}`, fetcher);
 
   if (error) return <h1>...sorry cannot load contact data</h1>;
 

@@ -1,28 +1,6 @@
-import mongoose, { model, models, Schema } from "mongoose";
+import Ad from "../models/ads";
 import crypto from "crypto";
-
-const URI = `mongodb+srv://JulianHirt:${process.env.MONGODB_PASSWORD}@cluster0.v6evwly.mongodb.net/?retryWrites=true&w=majority`;
-
-const adSchema = new Schema({
-  id: String,
-  userName: String,
-  userPictureSrc: String,
-  userEmail: String,
-  userPhonenumber: String,
-  adPictureSrc: String,
-  adTitle: String,
-  adDescription: String,
-  adCosts: String,
-  category: String,
-  tags: Array,
-  createdDate: Object,
-});
-
-const Ad = models.Ad || model("Ad", adSchema);
-
-async function connectWithMongoDB() {
-  await mongoose.connect(URI);
-}
+import connectWithMongoDB from "../helpers/dbConnect";
 
 async function getAllAds() {
   await connectWithMongoDB();

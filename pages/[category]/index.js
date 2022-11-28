@@ -8,7 +8,7 @@ export default function AdListPage({ setLastSearched }) {
   const { category } = Router.query;
   setLastSearched(category);
 
-  const { data: ads, error } = useSWR("/api/ads/", fetcher);
+  const { data: ads, error } = useSWR("/api/listing/", fetcher);
 
   if (error) return <h1>...sorry cannot load ads</h1>;
 

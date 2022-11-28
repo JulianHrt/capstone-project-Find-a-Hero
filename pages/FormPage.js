@@ -12,7 +12,7 @@ export default function FormPage() {
       createdDate: currentDate,
     };
 
-    const response = await fetch("/api/ads/", {
+    const response = await fetch("/api/listing/", {
       method: "POST",
       body: JSON.stringify(newAd),
     });

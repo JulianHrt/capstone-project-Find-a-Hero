@@ -13,14 +13,14 @@ export default function AdDetailsPage() {
   const router = useRouter();
   const { category, id } = router.query;
 
-  const { data: ad, error } = useSWR(`/api/ads/${id}`, fetcher);
+  const { data: ad, error } = useSWR(`/api/listing/${id}`, fetcher);
 
   if (error) return <h1>...sorry cannot load ad details</h1>;
 
   if (!ad) return <h1>...please wait while loading...</h1>;
 
   async function deleteAd() {
-    await fetch(`/api/ads/${id}`, {
+    await fetch(`/api/listing/${id}`, {
       method: "DELETE",
     });
 
@@ -65,7 +65,7 @@ export default function AdDetailsPage() {
             </StyledButton>
             <StyledButton
               type="button"
-              onClick={() => setModalShown((prevState) => !prevState)}
+              onClick={() => setModalShown(!isModalShown)}
             >
               no
             </StyledButton>

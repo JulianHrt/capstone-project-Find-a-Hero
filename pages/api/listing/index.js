@@ -1,11 +1,10 @@
-import { getAllAds, createNewAd } from "../../../helpers/db";
+import { getAllAds, createNewAd } from "../../../services/adServices";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     const allAds = await getAllAds();
     res.status(200).json(allAds);
   } else if (req.method === "POST") {
-    console.log(req);
     const ad = JSON.parse(req.body);
     const createdAd = await createNewAd(ad);
     res.status(201).json(createdAd);

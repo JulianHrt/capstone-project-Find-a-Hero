@@ -8,7 +8,7 @@ export default function EditAd() {
   const router = useRouter();
   const { category, id } = router.query;
 
-  const { data: ad, error } = useSWR(`/api/ads/${id}`, fetcher);
+  const { data: ad, error } = useSWR(`/api/listing/${id}`, fetcher);
 
   if (error) return <h1>...sorry cannot load adform data</h1>;
 
@@ -21,7 +21,7 @@ export default function EditAd() {
       createdDate: currentDate,
     };
 
-    await fetch(`/api/ads/${id}`, {
+    await fetch(`/api/listing/${id}`, {
       method: "PATCH",
       body: JSON.stringify(newAd),
     });

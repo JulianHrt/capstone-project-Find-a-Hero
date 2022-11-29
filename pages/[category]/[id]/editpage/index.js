@@ -3,7 +3,7 @@ import useSWR from "swr";
 import { fetcher } from "../../../../helpers/api";
 import AddAd from "../../../../components/AddAd";
 
-export default function EditAd() {
+export default function editpage() {
   const currentDate = new Date();
   const router = useRouter();
   const { category, id } = router.query;

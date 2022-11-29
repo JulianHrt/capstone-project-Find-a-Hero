@@ -3,12 +3,15 @@ import {
   updateAdById,
   deleteAdById,
 } from "../../../../services/adServices";
+import { getUserById } from "../../../../services/userServices";
 
 export default async function handler(request, response) {
   const { id } = request.query;
   if (request.method === "GET") {
-    const product = await getAdById(id);
-    response.status(200).json(product);
+    const oneAd = await getAdById(id);
+    const user = await getUserById(oneAd.userId);
+    oneAd.user = user;
+    response.status(200).json(oneAd);
   } else if (request.method === "PATCH") {
     const ad = JSON.parse(request.body);
     const updatedAd = await updateAdById(id, ad);

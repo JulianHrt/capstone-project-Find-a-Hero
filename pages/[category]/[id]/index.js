@@ -29,26 +29,11 @@ export default function AdDetailsPage({ isUser }) {
 
   return (
     <StyledArticle>
-      <UserContainer>
-        <UserProfilPhoto
-          src={
-            ad.userPictureSrc == ""
-              ? `https://source.unsplash.com/random/?person${ad.userName}`
-              : ad.userPictureSrc
-          }
-          width={40}
-          height={40}
-          alt={`Profilphoto of ${ad.userName}`}
-        />
-        <UserName>
-          {ad.userName.charAt(ad.userName.length - 1) === "s"
-            ? ad.userName
-            : ad.userName + "`s"}{" "}
-          Ad
-        </UserName>
-        {isUser.id === ad.userId ? (
+      {isUser.id === ad.userId ? (
+        <UserContainer>
+          <UserName>your Ad</UserName>
           <IconContainer>
-            <Link href={`/${category}/${id}/EditAd/`}>
+            <Link href={`/${category}/${id}/editpage/`}>
               <Icons variant="edit" color="black" />
             </Link>
             <ButtonAsIcon
@@ -58,10 +43,28 @@ export default function AdDetailsPage({ isUser }) {
               <Icons variant="delete" color="black" />
             </ButtonAsIcon>
           </IconContainer>
-        ) : (
-          ""
-        )}
-      </UserContainer>
+        </UserContainer>
+      ) : (
+        <UserContainer>
+          <UserProfilPhoto
+            src={
+              ad.user.userPictureSrc == ""
+                ? `https://source.unsplash.com/random/?person${ad.user.userName}`
+                : ad.user.userPictureSrc
+            }
+            width={40}
+            height={40}
+            alt={`Profilphoto of ${ad.user.userName}`}
+          />
+          <UserName>
+            {ad.user.userName.charAt(ad.user.userName.length - 1) === "s"
+              ? ad.user.userName
+              : ad.user.userName + "`s"}{" "}
+            Ad
+          </UserName>
+        </UserContainer>
+      )}
+
       {isModalShown && (
         <StyledModal>
           <p>Are you sure that you want to delete this ad? </p>
@@ -107,7 +110,7 @@ export default function AdDetailsPage({ isUser }) {
       </Attributes>
       <FlexWrapper>
         <StyledLink href={`/${category}`}>go back</StyledLink>
-        <StyledLink href={`/${category}/${id}/ContactPage`}>
+        <StyledLink href={`/${category}/${id}/contactpage`}>
           Book now
         </StyledLink>
       </FlexWrapper>
@@ -127,7 +130,7 @@ const UserContainer = styled.section`
   display: flex;
   font-weight: bold;
   align-items: center;
-  justify-content: flex-start;
+
   padding: 0 1rem 0 1rem;
 `;
 
@@ -137,12 +140,12 @@ const AdTitle = styled.h3`
 `;
 
 const UserName = styled.h2`
-  padding: 0 2rem 0 0.5rem;
   text-align: center;
 `;
 
 const UserProfilPhoto = styled(Image)`
   border-radius: 25px;
+  margin-right: 0.5rem;
 `;
 
 const ImageContainer = styled.section`

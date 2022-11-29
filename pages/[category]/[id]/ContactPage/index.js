@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ContactPage() {
+export default function contactPage() {
   const router = useRouter();
   const { category, id } = router.query;
 
@@ -20,21 +20,21 @@ export default function ContactPage() {
       <UserContainer>
         <UserProfilPhoto
           src={
-            ad.userPictureSrc == ""
-              ? `https://source.unsplash.com/random/?person${ad.userName}`
-              : ad.userPictureSrc
+            ad.user.userPictureSrc == ""
+              ? `https://source.unsplash.com/random/?person${ad.user.userName}`
+              : ad.user.userPictureSrc
           }
           width={40}
           height={40}
-          alt={`Profilphoto of ${ad.userName}`}
+          alt={`Profilphoto of ${ad.user.userName}`}
         />
-        <UserName>{ad.userName}´s Ad</UserName>
+        <UserName>{ad.user.userName}´s Ad</UserName>
       </UserContainer>
       <h3>You can reach your Hero</h3>
       <p>via mail</p>
-      <a href={`mailto:${ad.userEmail}`}>{ad.userEmail}</a>
+      <a href={`mailto:${ad.user.userEmail}`}>{ad.user.userEmail}</a>
       <p>via phone</p>
-      <a href={`tel:${ad.userPhonenumber}`}>{ad.userPhonenumber}</a>
+      <a href={`tel:${ad.user.userPhonenumber}`}>{ad.user.userPhonenumber}</a>
       <StyledLink href={`/${category}/${id}`}>go back</StyledLink>
     </StyledArticle>
   );

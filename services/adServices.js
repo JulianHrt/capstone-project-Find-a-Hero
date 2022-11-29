@@ -5,7 +5,7 @@ import connectWithMongoDB from "../helpers/dbConnect";
 async function getAllAds() {
   await connectWithMongoDB();
 
-  const ads = await Ad.find({}, { _id: false, __v: false });
+  const ads = await Ad.find({}, { _id: false, __v: false }, { lean: true });
 
   return ads;
 }
@@ -13,7 +13,11 @@ async function getAllAds() {
 async function getAdById(id) {
   await connectWithMongoDB();
 
-  const ad = await Ad.findOne({ id }, { _id: false, __v: false });
+  const ad = await Ad.findOne(
+    { id },
+    { _id: false, __v: false },
+    { lean: true }
+  );
   return ad;
 }
 

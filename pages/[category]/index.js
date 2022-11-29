@@ -29,6 +29,7 @@ export default function AdListPage({ setLastSearched }) {
     .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
   const heroCounter = sortedAds.length;
 
+  console.log(ads);
   return (
     <>
       <h1>I found {heroCounter} Heroes for you:</h1>
@@ -40,10 +41,10 @@ export default function AdListPage({ setLastSearched }) {
             adTitle={ad.adTitle}
             tags={ad.tags}
             adPictureSrc={ad.adPictureSrc}
-            userName={ad.userName}
+            userName={ad.user.userName}
             adCosts={ad.adCosts}
             createdDate={ad.createdDate}
-            userPictureSrc={ad.userPictureSrc}
+            userPictureSrc={ad.user.userPictureSrc}
             category={category}
           />
         );

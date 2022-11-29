@@ -8,14 +8,4 @@ async function getUserById(id) {
   return user;
 }
 
-async function getUserIdByName(name) {
-  await connectWithMongoDB();
-
-  const user = await User.findOne(
-    { userName: name },
-    { _id: false, __v: false }
-  );
-  return user;
-}
-
 export { getUserById };

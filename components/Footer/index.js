@@ -21,10 +21,10 @@ export default function Footer({ lastSearched, isUser }) {
         />
       </Link>
       {isUser.loggedIn && (
-        <Link href="/FormPage">
+        <Link href="/formpage">
           <Icons
             variant="add"
-            color={pathname === "/FormPage" ? "#BF382C" : "darkblue"}
+            color={pathname === "/formpage" ? "#BF382C" : "darkblue"}
           />
         </Link>
       )}

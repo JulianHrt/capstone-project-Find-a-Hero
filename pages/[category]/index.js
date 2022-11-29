@@ -29,7 +29,6 @@ export default function AdListPage({ setLastSearched }) {
     .sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
   const heroCounter = sortedAds.length;
 
-  console.log(ads);
   return (
     <>
       <h1>I found {heroCounter} Heroes for you:</h1>

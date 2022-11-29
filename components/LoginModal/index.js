@@ -1,12 +1,18 @@
 import styled from "styled-components";
 
-export default function LoginModal({ handleSubmit }) {
+export default function LoginModal({ handleSubmit, isNotFound }) {
   return (
     <StyledModal>
       <StyledForm onSubmit={handleSubmit}>
         <label htmlFor="name">
           Name:
-          <StyledInput type="text" id="name" name="name"></StyledInput>
+          <StyledInput
+            type="text"
+            id="name"
+            name="name"
+            pattern=".*[\S]+.*"
+            required
+          ></StyledInput>
         </label>
         <label htmlFor="password">
           Password:
@@ -14,9 +20,11 @@ export default function LoginModal({ handleSubmit }) {
             type="password"
             id="password"
             password="password"
+            required
           ></StyledInput>
         </label>
         <StyledButton type="submit">Login</StyledButton>
+        {isNotFound && <h3>Sorry no user was found.</h3>}
       </StyledForm>
     </StyledModal>
   );

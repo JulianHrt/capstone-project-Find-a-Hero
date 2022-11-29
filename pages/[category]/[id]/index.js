@@ -46,8 +46,8 @@ export default function AdDetailsPage({ isUser }) {
             : ad.userName + "`s"}{" "}
           Ad
         </UserName>
-        {isUser.id === ad.id ? (
-          <>
+        {isUser.id === ad.userId ? (
+          <IconContainer>
             <Link href={`/${category}/${id}/EditAd/`}>
               <Icons variant="edit" color="black" />
             </Link>
@@ -57,7 +57,7 @@ export default function AdDetailsPage({ isUser }) {
             >
               <Icons variant="delete" color="black" />
             </ButtonAsIcon>
-          </>
+          </IconContainer>
         ) : (
           ""
         )}
@@ -127,7 +127,7 @@ const UserContainer = styled.section`
   display: flex;
   font-weight: bold;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 0 1rem 0 1rem;
 `;
 
@@ -254,4 +254,10 @@ const ButtonWrapper = styled.div`
 const ButtonAsIcon = styled.button`
   background-color: white;
   border: none;
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  margin-left: auto;
+  margin-right: 0;
 `;

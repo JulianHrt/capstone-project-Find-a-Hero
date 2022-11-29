@@ -10,6 +10,8 @@ function getUserId(username) {
       return "4";
     case "Max":
       return "5";
+    default:
+      return undefined;
   }
 }
 

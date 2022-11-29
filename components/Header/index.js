@@ -8,6 +8,9 @@ import { fetcher } from "../../helpers/api";
 import { getUserId } from "../../helpers/getUsersId";
 
 export default function Header({ setUser, isUser }) {
+  const [isModalShown, setModalShown] = useState(false);
+  const [isNotFound, setNotFound] = useState(false);
+
   function handleSubmit(event) {
     event.preventDefault();
 
@@ -15,12 +18,18 @@ export default function Header({ setUser, isUser }) {
     const data = Object.fromEntries(formData);
     const userId = getUserId(data.name);
 
-    setUser({ id: userId, loggedIn: true });
-
-    setModalShown((prevState) => !prevState);
+    if (userId === undefined) {
+      setNotFound(true);
+      setTimeout(() => {
+        setNotFound(false);
+        event.target.name.value = "";
+        event.target.password.value = "";
+      }, 2500);
+    } else {
+      setUser({ id: userId, loggedIn: true });
+      setModalShown((prevState) => !prevState);
+    }
   }
-
-  const [isModalShown, setModalShown] = useState(false);
 
   const id = isUser.id;
 
@@ -33,7 +42,9 @@ export default function Header({ setUser, isUser }) {
         <LoginButton onClick={() => setModalShown(!isModalShown)}>
           Login
         </LoginButton>
-        {isModalShown && <LoginModal handleSubmit={handleSubmit} />}
+        {isModalShown && (
+          <LoginModal handleSubmit={handleSubmit} isNotFound={isNotFound} />
+        )}
       </FlexWrapper>
     );
   } else {
@@ -47,9 +58,9 @@ export default function Header({ setUser, isUser }) {
             alt={`Profilphoto of `}
           />
           <p>{user.userName}</p>
-          <p>{user.karmaAccount} Karmapoints</p>
+          <KarmaAccount>{user.karmaAccount} Karmapoints</KarmaAccount>
         </UserContainer>
-        <LoginButton onClick={() => setUser({ id: "", loggedIn: false })}>
+        <LoginButton onClick={() => setUser({ id: 0, loggedIn: false })}>
           Logout
         </LoginButton>
       </FlexWrapper>
@@ -59,18 +70,22 @@ export default function Header({ setUser, isUser }) {
 
 const FlexWrapper = styled.div`
   display: flex;
-  margin-top: 1rem;
   justify-content: space-between;
-  padding: 0 1rem 0 1rem;
+  margin: 0 1rem 0 1rem;
 `;
 const UserContainer = styled.section`
   display: flex;
   font-weight: bold;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 0.5rem;
 `;
 
 const UserProfilPhoto = styled(Image)`
   border-radius: 25px;
+`;
+
+const KarmaAccount = styled.p`
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 `;

@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 export default function AdListPage({ setLastSearched }) {
   const Router = useRouter();
   const { category } = Router.query;
-  setLastSearched(category);
+  setLastSearched((currentvalue) => category || currentvalue);
 
   const { data: ads, error } = useSWR("/api/listing/", fetcher);
 

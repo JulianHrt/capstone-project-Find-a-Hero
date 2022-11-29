@@ -66,7 +66,7 @@ const StyledArticle = styled.article`
 
 const UserContainer = styled.section`
   display: flex;
-  gap: 1em;
+  gap: 1rem;
   font-weight: bold;
   align-items: center;
 `;

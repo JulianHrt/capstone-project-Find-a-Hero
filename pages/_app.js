@@ -4,7 +4,7 @@ import { useLocalStorage } from "../helpers/hooks";
 
 function MyApp({ Component, pageProps }) {
   const [isUser, setUser] = useLocalStorage("user", {
-    id: "",
+    id: 0,
     isLoggedIn: false,
   });
   const [lastSearched, setLastSearched] = useLocalStorage(

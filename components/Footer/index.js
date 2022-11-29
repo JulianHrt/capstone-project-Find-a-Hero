@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
-import Router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import Icons from "../Icons";
 
 export default function Footer({ lastSearched, isUser }) {

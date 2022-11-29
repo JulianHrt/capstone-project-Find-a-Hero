@@ -1,7 +1,5 @@
 import { useRouter } from "next/router";
 import AddAd from "../components/AddAd";
-import useSWR from "swr";
-import { fetcher } from "../helpers/api";
 
 export default function formpage({ isUser }) {
   const router = useRouter();

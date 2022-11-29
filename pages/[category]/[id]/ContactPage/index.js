@@ -11,9 +11,9 @@ export default function contactPage() {
 
   const { data: ad, error } = useSWR(`/api/listing/${id}`, fetcher);
 
-  if (error) return <h1>...sorry cannot load contact data</h1>;
+  if (error) return <h1>... sorry cannot load contact data</h1>;
 
-  if (!ad) return <h1>...please wait while loading...</h1>;
+  if (!ad) return <h1>... please wait while loading ...</h1>;
 
   return (
     <StyledArticle>

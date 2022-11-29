@@ -11,6 +11,7 @@ export default function Home() {
         width={300}
         height={300}
         alt="Animation of Hero flying"
+        priority
       ></Image>
       <h1>
         Welcome to <span>Find a Hero!</span>

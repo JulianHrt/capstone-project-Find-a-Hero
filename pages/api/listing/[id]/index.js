@@ -7,6 +7,7 @@ import { getUserById } from "../../../../services/userServices";
 
 export default async function handler(request, response) {
   const { id } = request.query;
+
   if (request.method === "GET") {
     const oneAd = await getAdById(id);
     const user = await getUserById(oneAd.userId);

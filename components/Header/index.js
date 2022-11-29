@@ -52,10 +52,10 @@ export default function Header({ setUser, isUser }) {
       <FlexWrapper>
         <UserContainer>
           <UserProfilPhoto
-            src={`https://source.unsplash.com/random/?person`}
+            src={user.userPictureSrc}
             width={40}
             height={40}
-            alt={`Profilphoto of `}
+            alt={`Profilphoto of ${user.userName}`}
           />
           <p>{user.userName}</p>
           <KarmaAccount>{user.karmaAccount} Karmapoints</KarmaAccount>
@@ -71,7 +71,7 @@ export default function Header({ setUser, isUser }) {
 const FlexWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0 1rem 0 1rem;
+  margin: 1rem 1rem 0 1rem;
 `;
 const UserContainer = styled.section`
   display: flex;

@@ -2,13 +2,17 @@ import AdListItem from "../../components/AdListItem";
 import useSWR from "swr";
 import { fetcher } from "../../helpers/api";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function AdListPage({ setLastSearched }) {
   const Router = useRouter();
   const { category } = Router.query;
-  setLastSearched(category);
 
-  const { data: ads, error } = useSWR("/api/ads/", fetcher);
+  useEffect(() => {
+    setLastSearched((currentvalue) => category || currentvalue);
+  }, [category]);
+
+  const { data: ads, error } = useSWR("/api/listing/", fetcher);
 
   if (error) return <h1>...sorry cannot load ads</h1>;
 
@@ -36,10 +40,10 @@ export default function AdListPage({ setLastSearched }) {
             adTitle={ad.adTitle}
             tags={ad.tags}
             adPictureSrc={ad.adPictureSrc}
-            userName={ad.userName}
+            userName={ad.user.userName}
             adCosts={ad.adCosts}
             createdDate={ad.createdDate}
-            userPictureSrc={ad.userPictureSrc}
+            userPictureSrc={ad.user.userPictureSrc}
             category={category}
           />
         );

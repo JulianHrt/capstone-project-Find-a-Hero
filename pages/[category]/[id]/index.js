@@ -7,20 +7,20 @@ import Link from "next/link";
 import { useState } from "react";
 import Icons from "../../../components/Icons";
 
-export default function AdDetailsPage() {
+export default function AdDetailsPage({ isUser }) {
   const [isModalShown, setModalShown] = useState(false);
 
   const router = useRouter();
   const { category, id } = router.query;
 
-  const { data: ad, error } = useSWR(`/api/ads/${id}`, fetcher);
+  const { data: ad, error } = useSWR(`/api/listing/${id}`, fetcher);
 
   if (error) return <h1>...sorry cannot load ad details</h1>;
 
   if (!ad) return <h1>...please wait while loading...</h1>;
 
   async function deleteAd() {
-    await fetch(`/api/ads/${id}`, {
+    await fetch(`/api/listing/${id}`, {
       method: "DELETE",
     });
 
@@ -29,33 +29,42 @@ export default function AdDetailsPage() {
 
   return (
     <StyledArticle>
-      <UserContainer>
-        <UserProfilPhoto
-          src={
-            ad.userPictureSrc == ""
-              ? `https://source.unsplash.com/random/?person${ad.userName}`
-              : ad.userPictureSrc
-          }
-          width={40}
-          height={40}
-          alt={`Profilphoto of ${ad.userName}`}
-        />
-        <UserName>
-          {ad.userName.charAt(ad.userName.length - 1) === "s"
-            ? ad.userName
-            : ad.userName + "`s"}{" "}
-          Ad
-        </UserName>
-        <Link href={`/${category}/${id}/EditAd/`}>
-          <Icons variant="edit" color="black" />
-        </Link>
-        <ButtonAsIcon
-          type="button"
-          onClick={() => setModalShown(!isModalShown)}
-        >
-          <Icons variant="delete" color="black" />
-        </ButtonAsIcon>
-      </UserContainer>
+      {isUser.id === ad.userId ? (
+        <UserContainer>
+          <UserName>your Ad</UserName>
+          <IconContainer>
+            <Link href={`/${category}/${id}/editpage/`}>
+              <Icons variant="edit" color="black" />
+            </Link>
+            <ButtonAsIcon
+              type="button"
+              onClick={() => setModalShown(!isModalShown)}
+            >
+              <Icons variant="delete" color="black" />
+            </ButtonAsIcon>
+          </IconContainer>
+        </UserContainer>
+      ) : (
+        <UserContainer>
+          <UserProfilPhoto
+            src={
+              ad.user.userPictureSrc == ""
+                ? `https://source.unsplash.com/random/?person${ad.user.userName}`
+                : ad.user.userPictureSrc
+            }
+            width={40}
+            height={40}
+            alt={`Profilphoto of ${ad.user.userName}`}
+          />
+          <UserName>
+            {ad.user.userName.charAt(ad.user.userName.length - 1) === "s"
+              ? ad.user.userName
+              : ad.user.userName + "`s"}{" "}
+            Ad
+          </UserName>
+        </UserContainer>
+      )}
+
       {isModalShown && (
         <StyledModal>
           <p>Are you sure that you want to delete this ad? </p>
@@ -65,7 +74,7 @@ export default function AdDetailsPage() {
             </StyledButton>
             <StyledButton
               type="button"
-              onClick={() => setModalShown((prevState) => !prevState)}
+              onClick={() => setModalShown(!isModalShown)}
             >
               no
             </StyledButton>
@@ -101,7 +110,7 @@ export default function AdDetailsPage() {
       </Attributes>
       <FlexWrapper>
         <StyledLink href={`/${category}`}>go back</StyledLink>
-        <StyledLink href={`/${category}/${id}/ContactPage`}>
+        <StyledLink href={`/${category}/${id}/contactpage`}>
           Book now
         </StyledLink>
       </FlexWrapper>
@@ -121,7 +130,7 @@ const UserContainer = styled.section`
   display: flex;
   font-weight: bold;
   align-items: center;
-  justify-content: space-between;
+
   padding: 0 1rem 0 1rem;
 `;
 
@@ -131,12 +140,12 @@ const AdTitle = styled.h3`
 `;
 
 const UserName = styled.h2`
-  padding: 0 2rem 0 0.5rem;
   text-align: center;
 `;
 
 const UserProfilPhoto = styled(Image)`
   border-radius: 25px;
+  margin-right: 0.5rem;
 `;
 
 const ImageContainer = styled.section`
@@ -248,4 +257,10 @@ const ButtonWrapper = styled.div`
 const ButtonAsIcon = styled.button`
   background-color: white;
   border: none;
+`;
+
+const IconContainer = styled.div`
+  display: flex;
+  margin-left: auto;
+  margin-right: 0;
 `;

@@ -2,12 +2,12 @@ import Footer from "../Footer";
 import Header from "../Header";
 import styled from "styled-components";
 
-export default function Layout({ children, lastSearched }) {
+export default function Layout({ children, lastSearched, isUser, setUser }) {
   return (
     <>
-      <Header></Header>
+      <Header isUser={isUser} setUser={setUser}></Header>
       <MainFlexWrapper>{children}</MainFlexWrapper>
-      <Footer lastSearched={lastSearched}></Footer>
+      <Footer lastSearched={lastSearched} isUser={isUser}></Footer>
     </>
   );
 }

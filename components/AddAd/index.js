@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import Link from "next/link";
-import { categories } from "../../utils/categories";
+import { categories } from "../../helpers/categories";
 
 export default function AddAd({ onSubmit, inputValue, onGoBack }) {
   function handleSubmit(event) {
@@ -16,54 +15,6 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <StyledFieldset>
-        <legend>user information</legend>
-        <label htmlFor="userName">
-          *your name:
-          <input
-            type="text"
-            name="userName"
-            id="userName"
-            pattern=".*[\S]+.*"
-            defaultValue={inputValue === undefined ? "" : inputValue.userName}
-            required
-          ></input>
-        </label>
-        <label htmlFor="userPictureSrc">
-          link your profilepicture:
-          <input
-            type="text"
-            name="userPictureSrc"
-            id="userPictureSrc"
-            defaultValue={
-              inputValue === undefined ? "" : inputValue.userPictureSrc
-            }
-            placeholder="like this https://image.unsplash.de/"
-          ></input>
-        </label>
-        <label htmlFor="userEmail">
-          *your email:
-          <input
-            type="email"
-            name="userEmail"
-            id="userEmail"
-            defaultValue={inputValue === undefined ? "" : inputValue.userEmail}
-            required
-          ></input>
-        </label>
-        <label htmlFor="userPhonenumber">
-          *your phonenumber:
-          <input
-            type="number"
-            name="userPhonenumber"
-            id="userPhonenumber"
-            defaultValue={
-              inputValue === undefined ? "" : inputValue.userPhonenumber
-            }
-            required
-          ></input>
-        </label>
-      </StyledFieldset>
       <StyledFieldset>
         <legend>ad information</legend>
         <label htmlFor="adPictureSrc">

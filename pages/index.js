@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import { categories } from "../utils/categories";
+import { categories } from "../helpers/categories";
 
 export default function Home() {
   return (
@@ -11,6 +11,7 @@ export default function Home() {
         width={300}
         height={300}
         alt="Animation of Hero flying"
+        priority
       ></Image>
       <h1>
         Welcome to <span>Find a Hero!</span>

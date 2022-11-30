@@ -18,6 +18,6 @@ export default async function handler(request, response) {
     response
       .status(405)
       .setHeader("Allow", ["GET", "POST"])
-      .send("only the Method GET and POST is allowed!");
+      .send("only the Methods GET and POST are allowed!");
   }
 }

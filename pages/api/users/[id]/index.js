@@ -8,7 +8,7 @@ export default async function handler(request, response) {
   } else {
     response
       .status(405)
-      .setHeader("Allow", ["GET", "POST"])
-      .send("only the Methods GET and POST are allowed!");
+      .setHeader("Allow", ["GET", "PATCH"])
+      .send("only the Methods GET and PATCH are allowed!");
   }
 }

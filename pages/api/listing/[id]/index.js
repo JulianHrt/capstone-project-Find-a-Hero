@@ -10,6 +10,7 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     const oneAd = await getAdById(id);
+    console.log(oneAd.userId);
     const user = await getUserById(oneAd.userId);
     oneAd.user = user;
     response.status(200).json(oneAd);

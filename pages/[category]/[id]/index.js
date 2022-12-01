@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState } from "react";
 import Icons from "../../../components/Icons";
 
-export default function AdDetailsPage({ isUser }) {
+export default function AdDetailsPage({ isUser, setadIsPaid }) {
   const [isModalShown, setModalShown] = useState(false);
 
   const router = useRouter();
@@ -25,6 +25,11 @@ export default function AdDetailsPage({ isUser }) {
     });
 
     router.back();
+  }
+
+  async function BookAd() {
+    router.push(`/${category}/${id}/contactpage/`);
+    setadIsPaid({ id: id, paid: true });
   }
 
   return (
@@ -111,9 +116,9 @@ export default function AdDetailsPage({ isUser }) {
       <FlexWrapper>
         <StyledLink href={`/${category}`}>go back</StyledLink>
         {isUser.loggedIn && isUser.id !== ad.userId ? (
-          <StyledLink href={`/${category}/${id}/contactpage`}>
+          <StyledBookNowButton onClick={BookAd}>
             book now <span>for {ad.adCosts}</span> Karmapoints
-          </StyledLink>
+          </StyledBookNowButton>
         ) : isUser.id !== ad.userId ? (
           <p>login to book this hero</p>
         ) : (
@@ -184,6 +189,21 @@ const StyledLink = styled(Link)`
   text-decoration: none;
   text-align: center;
   color: black;
+  padding: 0.5rem;
+
+  :active {
+    background-color: black;
+    color: white;
+  }
+`;
+
+const StyledBookNowButton = styled.button`
+  background-color: white;
+  border: 1px solid black;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  font-size: 1rem;
   padding: 0.5rem;
 
   :active {

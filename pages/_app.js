@@ -16,7 +16,6 @@ function MyApp({ Component, pageProps }) {
     paid: false,
   });
 
-  console.log(adIsPaid);
   return (
     <>
       <Layout lastSearched={lastSearched} setUser={setUser} isUser={isUser}>

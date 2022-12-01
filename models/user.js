@@ -4,7 +4,7 @@ const userSchema = new Schema({
   userName: String,
   password: String,
   userId: String,
-  karmaAccount: String,
+  karmaAccount: Number,
   userPictureSrc: String,
   userEmail: String,
   userPhonenumber: String,

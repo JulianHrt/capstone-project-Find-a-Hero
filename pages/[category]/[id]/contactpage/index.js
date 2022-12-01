@@ -3,7 +3,6 @@ import { fetcher } from "../../../../helpers/api";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Image from "next/image";
-import Link from "next/link";
 
 export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
   const router = useRouter();
@@ -16,8 +15,8 @@ export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
   if (!ad) return <h1>... please wait while loading ...</h1>;
 
   function goBack() {
-    router.push(`/${category}/${id}`);
     setadIsPaid({ id: null, paid: false });
+    router.push(`/${category}/${id}`);
   }
 
   return (

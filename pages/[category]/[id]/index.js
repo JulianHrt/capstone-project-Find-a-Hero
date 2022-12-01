@@ -6,9 +6,14 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
 import Icons from "../../../components/Icons";
+import {
+  updateKarmaAmountForLoggedInUser,
+  updateKarmaAmountForHero,
+} from "../../../helpers/updateKarmaAccount";
 
 export default function AdDetailsPage({ isUser, setadIsPaid }) {
   const [isModalShown, setModalShown] = useState(false);
+  const [enoughtPoints, setenoughtPoints] = useState(true);
 
   const router = useRouter();
   const { category, id } = router.query;
@@ -28,8 +33,18 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
   }
 
   async function BookAd() {
-    router.push(`/${category}/${id}/contactpage/`);
-    setadIsPaid({ id: id, paid: true });
+    const response = await fetch(`/api/users/${isUser.id}`);
+    const user = await response.json();
+    const currentUserAmount = Number(user.karmaAccount);
+    const currentAdCosts = Number(ad.adCosts);
+    if (currentUserAmount < currentAdCosts) {
+      setenoughtPoints(false);
+    } else {
+      updateKarmaAmountForLoggedInUser(isUser.id, currentAdCosts);
+      updateKarmaAmountForHero(ad.userId, currentAdCosts);
+      setadIsPaid({ id: id, paid: true });
+      router.push(`/${category}/${id}/contactpage/`);
+    }
   }
 
   return (
@@ -117,7 +132,9 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
         <StyledLink href={`/${category}`}>go back</StyledLink>
         {isUser.loggedIn && isUser.id !== ad.userId ? (
           <StyledBookNowButton onClick={BookAd}>
-            book now <span>for {ad.adCosts}</span> Karmapoints
+            {enoughtPoints
+              ? `Book now for ${ad.adCosts} Karmapoints`
+              : "Sorry you dont have enough Karmapoints"}
           </StyledBookNowButton>
         ) : isUser.id !== ad.userId ? (
           <p>login to book this hero</p>

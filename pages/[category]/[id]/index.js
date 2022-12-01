@@ -110,9 +110,15 @@ export default function AdDetailsPage({ isUser }) {
       </Attributes>
       <FlexWrapper>
         <StyledLink href={`/${category}`}>go back</StyledLink>
-        <StyledLink href={`/${category}/${id}/contactpage`}>
-          Book now
-        </StyledLink>
+        {isUser.loggedIn && isUser.id !== ad.userId ? (
+          <StyledLink href={`/${category}/${id}/contactpage`}>
+            book now <span>for {ad.adCosts}</span> Karmapoints
+          </StyledLink>
+        ) : isUser.id !== ad.userId ? (
+          <p>login to book this hero</p>
+        ) : (
+          ""
+        )}
       </FlexWrapper>
     </StyledArticle>
   );
@@ -176,12 +182,17 @@ const StyledLink = styled(Link)`
   background-color: white;
   border: 1px solid black;
   text-decoration: none;
+  text-align: center;
   color: black;
   padding: 0.5rem;
 
   :active {
     background-color: black;
     color: white;
+  }
+
+  span {
+    font-weight: bold;
   }
 `;
 

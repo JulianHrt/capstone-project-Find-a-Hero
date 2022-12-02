@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { Image } from "cloudinary-react";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import { fetcher } from "../../../helpers/api";
@@ -67,13 +67,7 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
       ) : (
         <UserContainer>
           <UserProfilPhoto
-            src={
-              ad.user.userPictureSrc == ""
-                ? `https://source.unsplash.com/random/?person${ad.user.userName}`
-                : ad.user.userPictureSrc
-            }
-            width={40}
-            height={40}
+            publicId={ad.user.userPictureSrc}
             alt={`Profilphoto of ${ad.user.userName}`}
           />
           <UserName>
@@ -102,15 +96,10 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
         </StyledModal>
       )}
       <ImageContainer>
-        <Image
-          src={
-            ad.adPictureSrc == ""
-              ? `https://source.unsplash.com/random/1920x1080/?${ad.tags}`
-              : ad.adPictureSrc
-          }
-          fill
+        <Adtitlepictures
+          publicId={ad.adPictureSrc}
           alt={`Examplephoto of ${ad.adTitle}`}
-        />
+        ></Adtitlepictures>
       </ImageContainer>
       <AdTitle>{ad.adTitle}</AdTitle>
       <Description>
@@ -123,7 +112,7 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
         <p>Tags: </p>
         <TagsList>
           {ad.tags.map((tag) => {
-            return <TagItem key={tag}> {tag} </TagItem>;
+            return <TagItem key={tag}>#{tag}</TagItem>;
           })}
         </TagsList>
         <p>Costs: {ad.adCosts} Karmapoints</p>
@@ -174,12 +163,15 @@ const UserName = styled.h2`
 const UserProfilPhoto = styled(Image)`
   border-radius: 25px;
   margin-right: 0.5rem;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 `;
 
 const ImageContainer = styled.section`
   position: relative;
   width: 100%;
-  height: 60vw;
+  height: 100%;
 `;
 
 const Description = styled.section`
@@ -311,4 +303,10 @@ const IconContainer = styled.div`
   display: flex;
   margin-left: auto;
   margin-right: 0;
+`;
+
+const Adtitlepictures = styled(Image)`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 `;

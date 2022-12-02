@@ -1,6 +1,6 @@
-import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
+import { Image } from "cloudinary-react";
 
 export default function AdListItem({
   id,
@@ -17,33 +17,27 @@ export default function AdListItem({
   return (
     <StyledArticle>
       <ImageContainer>
-        <Image
-          src={
-            adPictureSrc == ""
-              ? `https://source.unsplash.com/random/1920x1080/?${tags}`
-              : adPictureSrc
-          }
-          fill
+        <Adtitlepictures
+          publicId={adPictureSrc}
           alt={`Examplephoto of ${adTitle}`}
-        />
+        ></Adtitlepictures>
       </ImageContainer>
       <AdTitle href={`/${category}/${id}`}>
         <h2>{adTitle}</h2>
       </AdTitle>
       <UserContainer>
         <UserProfilPhoto
-          src={
-            userPictureSrc == ""
-              ? `https://source.unsplash.com/random/?person${userName}`
-              : userPictureSrc
-          }
-          width={40}
-          height={40}
+          publicId={userPictureSrc}
           alt={`Profilphoto of ${userName}`}
         />
         <p>{userName}</p>
       </UserContainer>
       <Costs>for {adCosts} Karmapoints</Costs>
+      <TagsList>
+        {tags.map((tag) => {
+          return <TagItem>#{tag}</TagItem>;
+        })}
+      </TagsList>
       <DateContainer>created at {editedCreatedDate}</DateContainer>
     </StyledArticle>
   );
@@ -52,7 +46,7 @@ export default function AdListItem({
 const ImageContainer = styled.section`
   position: relative;
   width: 100%;
-  height: 60vw;
+  height: 100%;
 `;
 
 const StyledArticle = styled.article`
@@ -73,6 +67,9 @@ const UserContainer = styled.section`
 
 const UserProfilPhoto = styled(Image)`
   border-radius: 25px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 `;
 
 const DateContainer = styled.p`
@@ -90,4 +87,27 @@ const AdTitle = styled(Link)`
   h2 {
     text-align: center;
   }
+`;
+
+const Adtitlepictures = styled(Image)`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`;
+
+const TagsList = styled.ul`
+  display: flex;
+  justify-content: flex-start;
+  list-style: none;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0;
+`;
+
+const TagItem = styled.li`
+  border-radius: 10px;
+  border: 1px solid black;
+  padding: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: bold;
 `;

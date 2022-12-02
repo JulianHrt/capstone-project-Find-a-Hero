@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Image from "next/image";
+import { Image } from "cloudinary-react";
 import LoginButton from "../LoginButton";
 import { useState } from "react";
 import LoginModal from "../LoginModal";
@@ -52,9 +52,7 @@ export default function Header({ setUser, isUser }) {
       <FlexWrapper>
         <UserContainer>
           <UserProfilPhoto
-            src={user.userPictureSrc}
-            width={40}
-            height={40}
+            publicId={user.userPictureSrc}
             alt={`Profilphoto of ${user.userName}`}
           />
           <p>{user.userName}</p>
@@ -88,6 +86,10 @@ const UserContainer = styled.section`
 
 const UserProfilPhoto = styled(Image)`
   border-radius: 25px;
+  margin-right: 0.5rem;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 `;
 
 const KarmaAccount = styled.p`

@@ -11,6 +11,10 @@ function MyApp({ Component, pageProps }) {
     "lastsearched",
     "all"
   );
+  const [adIsPaid, setadIsPaid] = useLocalStorage("AdisPaid", {
+    id: null,
+    paid: false,
+  });
 
   return (
     <>
@@ -20,6 +24,8 @@ function MyApp({ Component, pageProps }) {
           {...pageProps}
           setLastSearched={setLastSearched}
           isUser={isUser}
+          adIsPaid={adIsPaid}
+          setadIsPaid={setadIsPaid}
         />
       </Layout>
     </>

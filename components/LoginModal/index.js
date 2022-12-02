@@ -24,7 +24,7 @@ export default function LoginModal({ handleSubmit, isNotFound }) {
           ></StyledInput>
         </label>
         <StyledButton type="submit">Login</StyledButton>
-        {isNotFound && <h3>Sorry no user was found.</h3>}
+        {isNotFound && <h3>Sorry we don't know this user ¯\_(ツ)_/¯</h3>}
       </StyledForm>
     </StyledModal>
   );

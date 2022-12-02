@@ -6,9 +6,14 @@ import styled from "styled-components";
 import Link from "next/link";
 import { useState } from "react";
 import Icons from "../../../components/Icons";
+import {
+  updateKarmaAmountForLoggedInUser,
+  updateKarmaAmountForHero,
+} from "../../../helpers/updateKarmaAccount";
 
-export default function AdDetailsPage({ isUser }) {
+export default function AdDetailsPage({ isUser, setadIsPaid }) {
   const [isModalShown, setModalShown] = useState(false);
+  const [enoughtPoints, setenoughtPoints] = useState(true);
 
   const router = useRouter();
   const { category, id } = router.query;
@@ -25,6 +30,21 @@ export default function AdDetailsPage({ isUser }) {
     });
 
     router.back();
+  }
+
+  async function BookAd() {
+    const response = await fetch(`/api/users/${isUser.id}`);
+    const user = await response.json();
+    const currentUserAmount = Number(user.karmaAccount);
+    const currentAdCosts = Number(ad.adCosts);
+    if (currentUserAmount < currentAdCosts) {
+      setenoughtPoints(false);
+    } else {
+      updateKarmaAmountForLoggedInUser(isUser.id, currentAdCosts);
+      updateKarmaAmountForHero(ad.userId, currentAdCosts);
+      setadIsPaid({ id: id, paid: true });
+      router.push(`/${category}/${id}/contactpage/`);
+    }
   }
 
   return (
@@ -110,9 +130,17 @@ export default function AdDetailsPage({ isUser }) {
       </Attributes>
       <FlexWrapper>
         <StyledLink href={`/${category}`}>go back</StyledLink>
-        <StyledLink href={`/${category}/${id}/contactpage`}>
-          Book now
-        </StyledLink>
+        {isUser.loggedIn && isUser.id !== ad.userId ? (
+          <StyledBookNowButton onClick={BookAd}>
+            {enoughtPoints
+              ? `Book now for ${ad.adCosts} Karmapoints`
+              : "Sorry you dont have enough Karmapoints"}
+          </StyledBookNowButton>
+        ) : isUser.id !== ad.userId ? (
+          <p>login to book this hero</p>
+        ) : (
+          ""
+        )}
       </FlexWrapper>
     </StyledArticle>
   );
@@ -176,12 +204,32 @@ const StyledLink = styled(Link)`
   background-color: white;
   border: 1px solid black;
   text-decoration: none;
+  text-align: center;
   color: black;
   padding: 0.5rem;
 
   :active {
     background-color: black;
     color: white;
+  }
+`;
+
+const StyledBookNowButton = styled.button`
+  background-color: white;
+  border: 1px solid black;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  font-size: 1rem;
+  padding: 0.5rem;
+
+  :active {
+    background-color: black;
+    color: white;
+  }
+
+  span {
+    font-weight: bold;
   }
 `;
 

@@ -35,7 +35,7 @@ export default function AdListItem({
       <Costs>for {adCosts} Karmapoints</Costs>
       <TagsList>
         {tags.map((tag) => {
-          return <TagItem>#{tag}</TagItem>;
+          return <TagItem key={tag}>#{tag}</TagItem>;
         })}
       </TagsList>
       <DateContainer>created at {editedCreatedDate}</DateContainer>

@@ -97,7 +97,11 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
       )}
       <ImageContainer>
         <Adtitlepictures
-          publicId={ad.adPictureSrc}
+          publicId={
+            ad.adPictureSrc === undefined
+              ? "placeholder-1920x1080_camkmj"
+              : ad.adPictureSrc
+          }
           alt={`Examplephoto of ${ad.adTitle}`}
         ></Adtitlepictures>
       </ImageContainer>

@@ -9,14 +9,18 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    const response = await fetch("/api/image/upload", {
-      method: "POST",
-      body: formData,
-    });
-    const image = await response.json();
-    const publicId = image.publicId;
+    if (data.adPictureSrc.name === "") {
+      onSubmit(data);
+    } else {
+      const response = await fetch("/api/image/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const image = await response.json();
+      const publicId = image.publicId;
 
-    onSubmit(data, publicId);
+      onSubmit(data, publicId);
+    }
 
     return data;
   }
@@ -30,13 +34,8 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
           <Adtitlepictures publicId={inputValue.adPictureSrc}></Adtitlepictures>
         )}
         <label htmlFor="adPictureSrc">
-          *upload new title picture:
-          <input
-            type="file"
-            name="adPictureSrc"
-            id="adPictureSrc"
-            required
-          ></input>
+          upload a new title picture:
+          <input type="file" name="adPictureSrc" id="adPictureSrc"></input>
         </label>
         <label htmlFor="adTitle">
           *type in your adtitle:
@@ -95,7 +94,8 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
           </select>
         </label>
         <label htmlFor="tags">
-          *describing hashtags for your ad:
+          *describing tags for your ad:{" "}
+          <StyledInfo>(type in without "#" and split with ",")</StyledInfo>
           <input
             type="text"
             name="tags"
@@ -164,4 +164,8 @@ const Adtitlepictures = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: contain;
+`;
+
+const StyledInfo = styled.span`
+  font-size: 0.75rem;
 `;

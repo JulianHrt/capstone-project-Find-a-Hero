@@ -18,7 +18,11 @@ export default function AdListItem({
     <StyledArticle>
       <ImageContainer>
         <Adtitlepictures
-          publicId={adPictureSrc}
+          publicId={
+            adPictureSrc === undefined
+              ? "placeholder-1920x1080_camkmj"
+              : adPictureSrc
+          }
           alt={`Examplephoto of ${adTitle}`}
         ></Adtitlepictures>
       </ImageContainer>

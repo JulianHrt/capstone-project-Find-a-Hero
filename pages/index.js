@@ -41,14 +41,11 @@ const FlexWrapper = styled.div`
 const StyledCategoryLink = styled(Link)`
   background-color: white;
   border: 1px solid black;
+  height: 40px;
+  width: auto;
   text-decoration: none;
   color: black;
 
   border-radius: 5px;
   padding: 0.5rem;
-
-  :active {
-    background-color: black;
-    color: white;
-  }
 `;

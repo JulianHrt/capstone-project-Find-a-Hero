@@ -1,6 +1,12 @@
 import styled from "styled-components";
+import Icons from "../Icons";
 
-export default function LoginModal({ handleSubmit, isNotFound }) {
+export default function LoginModal({
+  handleSubmit,
+  isNotFound,
+  setModalShown,
+  isModalShown,
+}) {
   return (
     <StyledModal>
       <StyledForm onSubmit={handleSubmit}>
@@ -23,7 +29,18 @@ export default function LoginModal({ handleSubmit, isNotFound }) {
             required
           ></StyledInput>
         </label>
-        <StyledButton type="submit">Login</StyledButton>
+        <ButtonWrapper>
+          <StyledButton type="submit">
+            <Icons variant="done" color="green">
+              check in
+            </Icons>
+          </StyledButton>
+          <StyledButton onClick={() => setModalShown(!isModalShown)}>
+            <Icons variant="close" color="red">
+              close
+            </Icons>
+          </StyledButton>
+        </ButtonWrapper>
         {isNotFound && <h3>Sorry we don't know this user ¯\_(ツ)_/¯</h3>}
       </StyledForm>
     </StyledModal>
@@ -59,16 +76,15 @@ const StyledInput = styled.input`
 
 const StyledButton = styled.button`
   background-color: white;
-  border: 1px solid black;
-  padding: 0.5rem;
-  text-decoration: none;
-  color: black;
+  border: none;
+  padding: 1.5rem;
   min-width: 40%;
+  color: black;
   text-align: center;
-  font-size: 1rem;
+`;
 
-  :active {
-    background-color: black;
-    color: white;
-  }
+const ButtonWrapper = styled.div`
+  display: flex;
+  align-self: stretch;
+  justify-content: space-evenly;
 `;

@@ -3,6 +3,7 @@ import { fetcher } from "../../../../helpers/api";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import { Image } from "cloudinary-react";
+import Icons from "../../../../components/Icons";
 
 export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
   const router = useRouter();
@@ -33,13 +34,25 @@ export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
             <UserName>{ad.user.userName}´s Ad</UserName>
           </UserContainer>
           <h3>You can reach your Hero</h3>
-          <p>via mail</p>
-          <a href={`mailto:${ad.user.userEmail}`}>{ad.user.userEmail}</a>
-          <p>via phone</p>
-          <a href={`tel:${ad.user.userPhonenumber}`}>
-            {ad.user.userPhonenumber}
-          </a>
-          <StyledButton onClick={goBack}>go back</StyledButton>
+          <StyledContactChannel>via mail</StyledContactChannel>
+
+          <StyledLink href={`mailto:${ad.user.userEmail}`}>
+            <Icons variant="mail" color="darkblue">
+              {ad.user.userEmail}
+            </Icons>
+          </StyledLink>
+
+          <StyledContactChannel>via phone</StyledContactChannel>
+
+          <StyledLink href={`tel:${ad.user.userPhonenumber}`}>
+            <Icons variant="phone" color="darkblue">
+              {ad.user.userPhonenumber}{" "}
+            </Icons>
+          </StyledLink>
+
+          <StyledButton onClick={goBack}>
+            <Icons variant="back">go back</Icons>
+          </StyledButton>
         </StyledArticle>
       ) : (
         <h1>
@@ -57,10 +70,6 @@ const StyledArticle = styled.article`
   align-items: center;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
   width: 85vw;
-
-  p {
-    font-weight: bold;
-  }
 `;
 
 const UserContainer = styled.section`
@@ -70,6 +79,11 @@ const UserContainer = styled.section`
   align-self: flex-start;
   justify-content: space-between;
   padding: 0 1rem 0 1rem;
+`;
+
+const StyledContactChannel = styled.p`
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 `;
 
 const UserProfilPhoto = styled(Image)`
@@ -87,15 +101,15 @@ const UserName = styled.h2`
 
 const StyledButton = styled.button`
   background-color: white;
-  border: 1px solid black;
-  text-decoration: none;
+  border: none;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: auto;
   color: black;
-  min-width: 40%;
-  font-size: 1rem;
   text-align: center;
+`;
 
-  :active {
-    background-color: black;
-    color: white;
-  }
+const StyledLink = styled.a`
+  text-decoration: none;
+  color: darkblue;
 `;

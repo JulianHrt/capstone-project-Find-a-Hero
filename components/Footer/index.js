@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useRouter } from "next/router";
 import Icons from "../Icons";
 
@@ -8,25 +8,37 @@ export default function Footer({ lastSearched, isUser }) {
 
   return (
     <StyledNav>
-      <Link href="/">
+      <StyledLink href="/" active={pathname === "/" ? true : false}>
         <Icons
           variant="search"
           color={pathname === "/" ? "#BF382C" : "darkblue"}
-        />
-      </Link>
-      <Link href={`/${lastSearched}`}>
+        >
+          look for heroes
+        </Icons>
+      </StyledLink>
+      <StyledLink
+        href={`/${lastSearched}`}
+        active={pathname.startsWith("/[category]") ? true : false}
+      >
         <Icons
           variant="results"
           color={pathname.startsWith("/[category]") ? "#BF382C" : "darkblue"}
-        />
-      </Link>
+        >
+          last found heroes
+        </Icons>
+      </StyledLink>
       {isUser.loggedIn && (
-        <Link href="/formpage">
+        <StyledLink
+          href="/formpage"
+          active={pathname === "/formpage" ? true : false}
+        >
           <Icons
             variant="add"
             color={pathname === "/formpage" ? "#BF382C" : "darkblue"}
-          />
-        </Link>
+          >
+            be a hero
+          </Icons>
+        </StyledLink>
       )}
     </StyledNav>
   );
@@ -37,7 +49,24 @@ const StyledNav = styled.nav`
   justify-content: space-around;
   position: fixed;
   bottom: 0;
+
   width: 100%;
   background-color: white;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  margin-top: 0.5rem;
+
+  width: 100%;
+  border-bottom: 4px solid darkblue;
+
+  ${({ active }) =>
+    active &&
+    css`
+      border-bottom: 6px solid #bf382c;
+      transition: 0.5s;
+    `}
 `;

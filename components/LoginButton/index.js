@@ -5,16 +5,9 @@ export default function LoginButton({ children, onClick }) {
 }
 const StyledButton = styled.button`
   background-color: white;
-  border: 1px solid black;
-  padding: 0.5rem;
-  text-decoration: none;
+  border: none;
+  margin-left: auto;
+  margin-right: 0;
   color: black;
-
   text-align: center;
-  font-size: 1rem;
-
-  :active {
-    background-color: black;
-    color: white;
-  }
 `;

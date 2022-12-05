@@ -14,9 +14,10 @@ export default function editpage() {
 
   if (!ad) return <h1>...please wait while loading...</h1>;
 
-  async function updateAd(ad) {
+  async function updateAd(ad, publicId) {
     const newAd = {
       ...ad,
+      adPictureSrc: publicId,
       tags: ad.tags.split(","),
       createdDate: currentDate,
     };

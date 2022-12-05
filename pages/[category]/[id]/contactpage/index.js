@@ -2,7 +2,7 @@ import useSWR from "swr";
 import { fetcher } from "../../../../helpers/api";
 import { useRouter } from "next/router";
 import styled from "styled-components";
-import Image from "next/image";
+import { Image } from "cloudinary-react";
 
 export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
   const router = useRouter();
@@ -27,13 +27,7 @@ export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
         <StyledArticle>
           <UserContainer>
             <UserProfilPhoto
-              src={
-                ad.user.userPictureSrc == ""
-                  ? `https://source.unsplash.com/random/?person${ad.user.userName}`
-                  : ad.user.userPictureSrc
-              }
-              width={40}
-              height={40}
+              publicId={ad.user.userPictureSrc}
               alt={`Profilphoto of ${ad.user.userName}`}
             />
             <UserName>{ad.user.userName}´s Ad</UserName>
@@ -80,6 +74,10 @@ const UserContainer = styled.section`
 
 const UserProfilPhoto = styled(Image)`
   border-radius: 25px;
+  margin-right: 0.5rem;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
 `;
 
 const UserName = styled.h2`

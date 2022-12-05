@@ -7,10 +7,11 @@ export default function formpage({ isUser }) {
 
   const id = isUser.id;
 
-  async function sendAd(ad) {
+  async function sendAd(ad, publicId) {
     const newAd = {
       ...ad,
       userId: id,
+      adPictureSrc: publicId,
       tags: ad.tags.split(","),
       createdDate: currentDate,
     };

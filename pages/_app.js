@@ -1,6 +1,7 @@
 import GlobalStyles from "../components/GlobalStyles";
 import Layout from "../components/Layout";
 import { useLocalStorage } from "../helpers/hooks";
+import { CloudinaryContext } from "cloudinary-react";
 
 function MyApp({ Component, pageProps }) {
   const [isUser, setUser] = useLocalStorage("user", {
@@ -18,16 +19,18 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <Layout lastSearched={lastSearched} setUser={setUser} isUser={isUser}>
-        <GlobalStyles />
-        <Component
-          {...pageProps}
-          setLastSearched={setLastSearched}
-          isUser={isUser}
-          adIsPaid={adIsPaid}
-          setadIsPaid={setadIsPaid}
-        />
-      </Layout>
+      <CloudinaryContext cloudName="dhi2fh33d">
+        <Layout lastSearched={lastSearched} setUser={setUser} isUser={isUser}>
+          <GlobalStyles />
+          <Component
+            {...pageProps}
+            setLastSearched={setLastSearched}
+            isUser={isUser}
+            adIsPaid={adIsPaid}
+            setadIsPaid={setadIsPaid}
+          />
+        </Layout>
+      </CloudinaryContext>
     </>
   );
 }

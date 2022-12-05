@@ -1,33 +1,41 @@
 import styled from "styled-components";
 import { categories } from "../../helpers/categories";
+import { Image } from "cloudinary-react";
 
 export default function AddAd({ onSubmit, inputValue, onGoBack }) {
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    onSubmit(data);
+    if (data.adPictureSrc.name === "") {
+      onSubmit(data);
+    } else {
+      const response = await fetch("/api/image/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const image = await response.json();
+      const publicId = image.publicId;
+
+      onSubmit(data, publicId);
+    }
 
     return data;
   }
 
   return (
     <StyledForm onSubmit={handleSubmit}>
-      <StyledFieldset>
-        <legend>ad information</legend>
+      <StyledContainer>
+        {inputValue === undefined ? (
+          ""
+        ) : (
+          <Adtitlepictures publicId={inputValue.adPictureSrc}></Adtitlepictures>
+        )}
         <label htmlFor="adPictureSrc">
-          link your adtitlepicture:
-          <input
-            type="text"
-            name="adPictureSrc"
-            id="adPictureSrc"
-            defaultValue={
-              inputValue === undefined ? "" : inputValue.adPictureSrc
-            }
-            placeholder="like this https://image.unsplash.de/"
-          ></input>
+          upload a new title picture:
+          <input type="file" name="adPictureSrc" id="adPictureSrc"></input>
         </label>
         <label htmlFor="adTitle">
           *type in your adtitle:
@@ -86,7 +94,8 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
           </select>
         </label>
         <label htmlFor="tags">
-          *describing hashtags for your ad:
+          *describing tags for your ad:{" "}
+          <StyledInfo>(type in without "#" and split with ",")</StyledInfo>
           <input
             type="text"
             name="tags"
@@ -96,7 +105,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
             required
           ></input>
         </label>
-      </StyledFieldset>
+      </StyledContainer>
       <FlexWrapper>
         <StyledButton onClick={onGoBack}>Go Back</StyledButton>
         <StyledButton type="submit">Save</StyledButton>
@@ -130,12 +139,12 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledFieldset = styled.fieldset`
+const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 0.75rem;
-
+  padding: 0.5rem;
   label,
   input,
   textarea,
@@ -149,4 +158,14 @@ const StyledFieldset = styled.fieldset`
 const FlexWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+`;
+
+const Adtitlepictures = styled(Image)`
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+`;
+
+const StyledInfo = styled.span`
+  font-size: 0.75rem;
 `;

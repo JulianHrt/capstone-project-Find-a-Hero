@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { categories } from "../../helpers/categories";
 import { Image } from "cloudinary-react";
+import Icons from "../Icons";
 
 export default function AddAd({ onSubmit, inputValue, onGoBack }) {
   async function handleSubmit(event) {
@@ -33,10 +34,16 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
         ) : (
           <Adtitlepictures publicId={inputValue.adPictureSrc}></Adtitlepictures>
         )}
-        <label htmlFor="adPictureSrc">
-          upload a new title picture:
-          <input type="file" name="adPictureSrc" id="adPictureSrc"></input>
-        </label>
+        <StyledLabelForUpload htmlFor="adPictureSrc">
+          <Icons variant="upload" color="black">
+            upload a new title picture
+          </Icons>
+          <StyledUpload
+            type="file"
+            name="adPictureSrc"
+            id="adPictureSrc"
+          ></StyledUpload>
+        </StyledLabelForUpload>
         <label htmlFor="adTitle">
           *type in your adtitle:
           <input
@@ -107,8 +114,12 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
         </label>
       </StyledContainer>
       <FlexWrapper>
-        <StyledButton onClick={onGoBack}>Go Back</StyledButton>
-        <StyledButton type="submit">Save</StyledButton>
+        <StyledButton onClick={onGoBack}>
+          <Icons variant="back">go back without saving</Icons>
+        </StyledButton>
+        <StyledButton type="submit">
+          <Icons variant="save">save</Icons>
+        </StyledButton>
       </FlexWrapper>
     </StyledForm>
   );
@@ -121,22 +132,24 @@ const StyledForm = styled.form`
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
   padding: 0.5rem;
   gap: 1rem;
+
+  input,
+  textarea,
+  select {
+    border-radius: 5px;
+    border: 1px solid black;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
 `;
 
 const StyledButton = styled.button`
   background-color: white;
-  border: 1px solid black;
+  border: none;
   padding: 0.5rem;
-  text-decoration: none;
-  color: black;
   min-width: 40%;
+  color: black;
   text-align: center;
-  font-size: 1rem;
-
-  :active {
-    background-color: black;
-    color: white;
-  }
 `;
 
 const StyledContainer = styled.div`
@@ -168,4 +181,20 @@ const Adtitlepictures = styled(Image)`
 
 const StyledInfo = styled.span`
   font-size: 0.75rem;
+`;
+
+const StyledUpload = styled.input`
+  opacity: 0;
+  z-index: -1;
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 0.1px;
+  height: 0.1px;
+`;
+
+const StyledLabelForUpload = styled.label`
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 1rem 0.5rem 0.5rem 0.5rem;
 `;

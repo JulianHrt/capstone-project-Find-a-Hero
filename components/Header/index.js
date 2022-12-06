@@ -6,6 +6,7 @@ import LoginModal from "../LoginModal";
 import { getUserId } from "../../helpers/getUsersId";
 import { useRouter } from "next/router";
 import { getLoggedInUser } from "../../helpers/getLoggedInUser";
+import Icons from "../Icons";
 
 export default function Header({ setUser, isUser }) {
   const [isModalShown, setModalShown] = useState(false);
@@ -40,31 +41,34 @@ export default function Header({ setUser, isUser }) {
       <FlexWrapper>
         <p>Please log in to be a Hero!</p>
         <LoginButton onClick={() => setModalShown(!isModalShown)}>
-          Login
+          <Icons variant="lockOpen">Login</Icons>
         </LoginButton>
         {isModalShown && (
-          <LoginModal handleSubmit={handleSubmit} isNotFound={isNotFound} />
+          <LoginModal
+            handleSubmit={handleSubmit}
+            isNotFound={isNotFound}
+            setModalShown={setModalShown}
+            isModalShown={isModalShown}
+          />
         )}
       </FlexWrapper>
     );
   } else {
     return (
       <FlexWrapper>
-        <UserContainer>
-          <UserProfilPhoto
-            publicId={user.userPictureSrc}
-            alt={`Profilphoto of ${user.userName}`}
-          />
-          <p>{user.userName}</p>
-          <KarmaAccount>{user.karmaAccount} Karmapoints</KarmaAccount>
-        </UserContainer>
+        <UserProfilPhoto
+          publicId={user.userPictureSrc}
+          alt={`Profilphoto of ${user.userName}`}
+        />
+        <p>{user.userName}</p>
+        <KarmaAccount>{user.karmaAccount} Karmapoints</KarmaAccount>
         <LoginButton
           onClick={() => {
             setUser({ id: 0, loggedIn: false });
             router.push("/");
           }}
         >
-          Logout
+          <Icons variant="lockClosed">Logout</Icons>
         </LoginButton>
       </FlexWrapper>
     );
@@ -73,14 +77,9 @@ export default function Header({ setUser, isUser }) {
 
 const FlexWrapper = styled.div`
   display: flex;
-  justify-content: space-between;
-  margin: 1rem 1rem 0 1rem;
-`;
-const UserContainer = styled.section`
-  display: flex;
   font-weight: bold;
   align-items: center;
-  justify-content: space-evenly;
+  margin: 1rem 1rem 0 1rem;
   gap: 0.5rem;
 `;
 
@@ -93,6 +92,5 @@ const UserProfilPhoto = styled(Image)`
 `;
 
 const KarmaAccount = styled.p`
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  margin-left: 2rem;
 `;

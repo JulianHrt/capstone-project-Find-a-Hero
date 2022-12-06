@@ -53,15 +53,21 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
         <UserContainer>
           <UserName>your Ad</UserName>
           <IconContainer>
-            <Link href={`/${category}/${id}/editpage/`}>
-              <Icons variant="edit" color="black" />
-            </Link>
-            <ButtonAsIcon
+            <StyledButton
+              onClick={() => router.push(`/${category}/${id}/editpage/`)}
+            >
+              <Icons variant="edit" color="black">
+                edit
+              </Icons>
+            </StyledButton>
+            <StyledButton
               type="button"
               onClick={() => setModalShown(!isModalShown)}
             >
-              <Icons variant="delete" color="black" />
-            </ButtonAsIcon>
+              <Icons variant="delete" color="black">
+                delete
+              </Icons>
+            </StyledButton>
           </IconContainer>
         </UserContainer>
       ) : (
@@ -84,13 +90,18 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
           <p>Are you sure that you want to delete this ad? </p>
           <ButtonWrapper>
             <StyledButton type="button" onClick={deleteAd}>
-              yes
+              <Icons variant="done" color="green">
+                yes
+              </Icons>
             </StyledButton>
             <StyledButton
               type="button"
               onClick={() => setModalShown(!isModalShown)}
             >
-              no
+              <Icons variant="close" color="red">
+                {" "}
+                no
+              </Icons>
             </StyledButton>
           </ButtonWrapper>
         </StyledModal>
@@ -122,15 +133,25 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
         <p>Costs: {ad.adCosts} Karmapoints</p>
       </Attributes>
       <FlexWrapper>
-        <StyledLink href={`/${category}`}>go back</StyledLink>
+        <StyledLink href={`/${category}`}>
+          <Icons variant="back">go back</Icons>
+        </StyledLink>
         {isUser.loggedIn && isUser.id !== ad.userId ? (
-          <StyledBookNowButton onClick={BookAd}>
-            {enoughtPoints
-              ? `Book now for ${ad.adCosts} Karmapoints`
-              : "Sorry you dont have enough Karmapoints"}
-          </StyledBookNowButton>
+          <StyledButton type="button" onClick={BookAd}>
+            {enoughtPoints ? (
+              <Icons variant="book">
+                Book now for {ad.adCosts} Karmapoints
+              </Icons>
+            ) : (
+              <Icons variant="close" color="red">
+                Sorry you dont have enough Karmapoints
+              </Icons>
+            )}
+          </StyledButton>
         ) : isUser.id !== ad.userId ? (
-          <p>login to book this hero</p>
+          <Icons variant="close" color="red">
+            Please login to book this hero!
+          </Icons>
         ) : (
           ""
         )}
@@ -151,7 +172,6 @@ const UserContainer = styled.section`
   display: flex;
   font-weight: bold;
   align-items: center;
-
   padding: 0 1rem 0 1rem;
 `;
 
@@ -198,50 +218,19 @@ const Attributes = styled.section`
 
 const StyledLink = styled(Link)`
   background-color: white;
-  border: 1px solid black;
   text-decoration: none;
   text-align: center;
   color: black;
   padding: 0.5rem;
-
-  :active {
-    background-color: black;
-    color: white;
-  }
-`;
-
-const StyledBookNowButton = styled.button`
-  background-color: white;
-  border: 1px solid black;
-  text-decoration: none;
-  text-align: center;
-  color: black;
-  font-size: 1rem;
-  padding: 0.5rem;
-
-  :active {
-    background-color: black;
-    color: white;
-  }
-
-  span {
-    font-weight: bold;
-  }
 `;
 
 const StyledButton = styled.button`
   background-color: white;
-  border: 1px solid black;
-  text-decoration: none;
-  color: black;
+  border: none;
+  padding: 0.5rem;
   min-width: 40%;
-  font-size: 1rem;
+  color: black;
   text-align: center;
-
-  :active {
-    background-color: black;
-    color: white;
-  }
 `;
 
 const TagsList = styled.ul`
@@ -273,7 +262,8 @@ const CategoryItem = styled.p`
 const FlexWrapper = styled.section`
   display: flex;
   justify-content: space-between;
-  margin: 0 1rem 1rem 1rem;
+  margin: 1rem;
+  align-items: center;
 `;
 
 const StyledModal = styled.div`
@@ -298,15 +288,12 @@ const ButtonWrapper = styled.div`
   justify-content: space-evenly;
 `;
 
-const ButtonAsIcon = styled.button`
-  background-color: white;
-  border: none;
-`;
-
 const IconContainer = styled.div`
   display: flex;
   margin-left: auto;
   margin-right: 0;
+  align-items: center;
+  gap: 1rem;
 `;
 
 const Adtitlepictures = styled(Image)`

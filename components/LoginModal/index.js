@@ -36,7 +36,7 @@ export default function LoginModal({
             </Icons>
           </StyledButton>
           <StyledButton onClick={() => setModalShown(!isModalShown)}>
-            <Icons variant="close" color="red">
+            <Icons variant="close" color="#ea5455">
               close
             </Icons>
           </StyledButton>
@@ -49,6 +49,7 @@ export default function LoginModal({
 
 const StyledModal = styled.div`
   position: absolute;
+  border-radius: 10px;
   top: 18vh;
   left: 5%;
   right: 5%;
@@ -79,7 +80,7 @@ const StyledButton = styled.button`
   border: none;
   padding: 1.5rem;
   min-width: 40%;
-  color: black;
+  color: #342f66;
   text-align: center;
 `;
 

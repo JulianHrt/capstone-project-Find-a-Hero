@@ -37,7 +37,7 @@ export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
           <StyledContactChannel>via mail</StyledContactChannel>
 
           <StyledLink href={`mailto:${ad.user.userEmail}`}>
-            <Icons variant="mail" color="darkblue">
+            <Icons variant="mail" color="#342F66">
               {ad.user.userEmail}
             </Icons>
           </StyledLink>
@@ -45,13 +45,15 @@ export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
           <StyledContactChannel>via phone</StyledContactChannel>
 
           <StyledLink href={`tel:${ad.user.userPhonenumber}`}>
-            <Icons variant="phone" color="darkblue">
-              {ad.user.userPhonenumber}{" "}
+            <Icons variant="phone" color="#342F66">
+              {ad.user.userPhonenumber}
             </Icons>
           </StyledLink>
 
           <StyledButton onClick={goBack}>
-            <Icons variant="back">go back</Icons>
+            <Icons variant="back" color="#342F66">
+              go back
+            </Icons>
           </StyledButton>
         </StyledArticle>
       ) : (
@@ -69,6 +71,7 @@ const StyledArticle = styled.article`
   flex-direction: column;
   align-items: center;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+  border-radius: 10px;
   width: 85vw;
 `;
 
@@ -87,7 +90,7 @@ const StyledContactChannel = styled.p`
 `;
 
 const UserProfilPhoto = styled(Image)`
-  border-radius: 25px;
+  border-radius: 50% 50% 50% 50% / 85% 85% 15% 15%;
   margin-right: 0.5rem;
   width: 50px;
   height: 50px;
@@ -105,11 +108,11 @@ const StyledButton = styled.button`
   padding: 0.5rem;
   margin-left: 0.5rem;
   margin-right: auto;
-  color: black;
+  color: #342f66;
   text-align: center;
 `;
 
 const StyledLink = styled.a`
   text-decoration: none;
-  color: darkblue;
+  color: #342f66;
 `;

@@ -56,7 +56,7 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
             <StyledButton
               onClick={() => router.push(`/${category}/${id}/editpage/`)}
             >
-              <Icons variant="edit" color="black">
+              <Icons variant="edit" color="#342F66">
                 edit
               </Icons>
             </StyledButton>
@@ -64,7 +64,7 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
               type="button"
               onClick={() => setModalShown(!isModalShown)}
             >
-              <Icons variant="delete" color="black">
+              <Icons variant="delete" color="#342F66">
                 delete
               </Icons>
             </StyledButton>
@@ -98,7 +98,7 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
               type="button"
               onClick={() => setModalShown(!isModalShown)}
             >
-              <Icons variant="close" color="red">
+              <Icons variant="close" color="#ea5455">
                 {" "}
                 no
               </Icons>
@@ -134,22 +134,24 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
       </Attributes>
       <FlexWrapper>
         <StyledLink href={`/${category}`}>
-          <Icons variant="back">go back</Icons>
+          <Icons variant="back" color="#342F66">
+            go back
+          </Icons>
         </StyledLink>
         {isUser.loggedIn && isUser.id !== ad.userId ? (
           <StyledButton type="button" onClick={BookAd}>
             {enoughtPoints ? (
-              <Icons variant="book">
+              <Icons variant="book" color="#342F66">
                 Book now for {ad.adCosts} Karmapoints
               </Icons>
             ) : (
-              <Icons variant="close" color="red">
+              <Icons variant="close" color="#ea5455">
                 Sorry you dont have enough Karmapoints
               </Icons>
             )}
           </StyledButton>
         ) : isUser.id !== ad.userId ? (
-          <Icons variant="close" color="red">
+          <Icons variant="close" color="#ea5455">
             Please login to book this hero!
           </Icons>
         ) : (
@@ -166,6 +168,7 @@ const StyledArticle = styled.article`
   position: relative;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
   width: 85vw;
+  border-radius: 10px;
 `;
 
 const UserContainer = styled.section`
@@ -185,7 +188,7 @@ const UserName = styled.h2`
 `;
 
 const UserProfilPhoto = styled(Image)`
-  border-radius: 25px;
+  border-radius: 50% 50% 50% 50% / 85% 85% 15% 15%;
   margin-right: 0.5rem;
   width: 50px;
   height: 50px;
@@ -199,8 +202,8 @@ const ImageContainer = styled.section`
 `;
 
 const Description = styled.section`
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid #342f66;
+  border-bottom: 1px solid #342f66;
   padding: 0 1rem 1rem 1rem;
 
   p {
@@ -220,7 +223,7 @@ const StyledLink = styled(Link)`
   background-color: white;
   text-decoration: none;
   text-align: center;
-  color: black;
+  color: #342f66;
   padding: 0.5rem;
 `;
 
@@ -229,7 +232,7 @@ const StyledButton = styled.button`
   border: none;
   padding: 0.5rem;
   min-width: 40%;
-  color: black;
+  color: #342f66;
   text-align: center;
 `;
 
@@ -244,19 +247,21 @@ const TagsList = styled.ul`
 
 const TagItem = styled.li`
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid #342f66;
   padding: 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;
+  color: #342f66;
 `;
 
 const CategoryItem = styled.p`
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid #342f66;
   padding: 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;
   text-align: center;
+  color: #342f66;
 `;
 
 const FlexWrapper = styled.section`
@@ -268,7 +273,8 @@ const FlexWrapper = styled.section`
 
 const StyledModal = styled.div`
   position: absolute;
-  top: 18vh;
+  border-radius: 10px;
+  top: 16vh;
   left: 5%;
   right: 5%;
   height: 20%;

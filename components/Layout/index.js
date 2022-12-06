@@ -20,6 +20,6 @@ const MainFlexWrapper = styled.main`
 
   span {
     display: block;
-    color: darkblue;
+    color: #342f66;
   }
 `;

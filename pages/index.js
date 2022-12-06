@@ -39,13 +39,15 @@ const FlexWrapper = styled.div`
 `;
 
 const StyledCategoryLink = styled(Link)`
-  background-color: white;
-  border: 1px solid black;
   height: 40px;
   width: auto;
   text-decoration: none;
-  color: black;
-
-  border-radius: 5px;
   padding: 0.5rem;
+  margin: 0.25rem;
+  color: #342f66;
+  font-weight: bold;
+  border-radius: 10px;
+  border: 0.5px solid #342f66;
+  background: #ffffff;
+  box-shadow: 1px 1px 1px #342f66, -1px -1px 1px #342f66;
 `;

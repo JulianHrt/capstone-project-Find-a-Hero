@@ -35,7 +35,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
           <Adtitlepictures publicId={inputValue.adPictureSrc}></Adtitlepictures>
         )}
         <StyledLabelForUpload htmlFor="adPictureSrc">
-          <Icons variant="upload" color="black">
+          <Icons variant="upload" color="#342F66">
             upload a new title picture
           </Icons>
           <StyledUpload
@@ -115,10 +115,14 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
       </StyledContainer>
       <FlexWrapper>
         <StyledButton onClick={onGoBack}>
-          <Icons variant="back">go back without saving</Icons>
+          <Icons variant="back" color="#ea5455">
+            go back without saving
+          </Icons>
         </StyledButton>
         <StyledButton type="submit">
-          <Icons variant="save">save</Icons>
+          <Icons variant="save" color="green">
+            save
+          </Icons>
         </StyledButton>
       </FlexWrapper>
     </StyledForm>
@@ -131,13 +135,14 @@ const StyledForm = styled.form`
   width: 85vw;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
   padding: 0.5rem;
+  border-radius: 10px;
   gap: 1rem;
 
   input,
   textarea,
   select {
     border-radius: 5px;
-    border: 1px solid black;
+    border: 1px solid #342f66;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
@@ -148,7 +153,7 @@ const StyledButton = styled.button`
   border: none;
   padding: 0.5rem;
   min-width: 40%;
-  color: black;
+  color: #342f66;
   text-align: center;
 `;
 
@@ -194,7 +199,7 @@ const StyledUpload = styled.input`
 `;
 
 const StyledLabelForUpload = styled.label`
-  border: 1px solid black;
+  border: 1px solid #342f66;
   border-radius: 5px;
   padding: 1rem 0.5rem 0.5rem 0.5rem;
 `;

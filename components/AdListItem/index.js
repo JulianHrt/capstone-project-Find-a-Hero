@@ -15,35 +15,37 @@ export default function AdListItem({
 }) {
   const editedCreatedDate = new Date(createdDate).toLocaleDateString();
   return (
-    <StyledArticle>
-      <ImageContainer>
-        <Adtitlepictures
-          publicId={
-            adPictureSrc === undefined
-              ? "placeholder-1920x1080_camkmj"
-              : adPictureSrc
-          }
-          alt={`Examplephoto of ${adTitle}`}
-        ></Adtitlepictures>
-      </ImageContainer>
-      <AdTitle href={`/${category}/${id}`}>
+    <LinkToDetailspage href={`/${category}/${id}`}>
+      <StyledArticle>
+        <ImageContainer>
+          <Adtitlepictures
+            publicId={
+              adPictureSrc === undefined
+                ? "placeholder-1920x1080_camkmj"
+                : adPictureSrc
+            }
+            alt={`Examplephoto of ${adTitle}`}
+          ></Adtitlepictures>
+        </ImageContainer>
+
         <h2>{adTitle}</h2>
-      </AdTitle>
-      <UserContainer>
-        <UserProfilPhoto
-          publicId={userPictureSrc}
-          alt={`Profilphoto of ${userName}`}
-        />
-        <p>{userName}</p>
-      </UserContainer>
-      <Costs>for {adCosts} Karmapoints</Costs>
-      <TagsList>
-        {tags.map((tag) => {
-          return <TagItem key={tag}>#{tag}</TagItem>;
-        })}
-      </TagsList>
-      <DateContainer>created at {editedCreatedDate}</DateContainer>
-    </StyledArticle>
+
+        <UserContainer>
+          <UserProfilPhoto
+            publicId={userPictureSrc}
+            alt={`Profilphoto of ${userName}`}
+          />
+          <p>{userName}</p>
+        </UserContainer>
+        <Costs>for {adCosts} Karmapoints</Costs>
+        <TagsList>
+          {tags.map((tag) => {
+            return <TagItem key={tag}>#{tag}</TagItem>;
+          })}
+        </TagsList>
+        <DateContainer>created at {editedCreatedDate}</DateContainer>
+      </StyledArticle>
+    </LinkToDetailspage>
   );
 }
 
@@ -59,6 +61,7 @@ const StyledArticle = styled.article`
   align-items: center;
   width: 85vw;
   margin-bottom: 1rem;
+  border-radius: 10px;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
 `;
 
@@ -70,7 +73,7 @@ const UserContainer = styled.section`
 `;
 
 const UserProfilPhoto = styled(Image)`
-  border-radius: 25px;
+  border-radius: 50% 50% 50% 50% / 85% 85% 15% 15%;
   width: 50px;
   height: 50px;
   object-fit: cover;
@@ -85,11 +88,13 @@ const Costs = styled.p`
   font-weight: bold;
 `;
 
-const AdTitle = styled(Link)`
-  padding: 0 1rem 0 1rem;
+const LinkToDetailspage = styled(Link)`
+  text-decoration: none;
+  color: black;
 
   h2 {
     text-align: center;
+    color: #342f66;
   }
 `;
 
@@ -97,6 +102,8 @@ const Adtitlepictures = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: contain;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;
 
 const TagsList = styled.ul`
@@ -110,7 +117,7 @@ const TagsList = styled.ul`
 
 const TagItem = styled.li`
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid #342f66;
   padding: 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;

@@ -39,52 +39,64 @@ export default function Header({ setUser, isUser }) {
   if (!user) {
     return (
       <FlexWrapper>
-        <p>Please log in to be a Hero!</p>
-        <LoginButton onClick={() => setModalShown(!isModalShown)}>
-          <Icons variant="lockOpen">Login</Icons>
-        </LoginButton>
-        {isModalShown && (
-          <LoginModal
-            handleSubmit={handleSubmit}
-            isNotFound={isNotFound}
-            setModalShown={setModalShown}
-            isModalShown={isModalShown}
-          />
-        )}
+        <UserContainer>
+          <p>Please log in to be a Hero!</p>
+          <LoginButton onClick={() => setModalShown(!isModalShown)}>
+            <Icons variant="lockOpen" color="#342F66">
+              Login
+            </Icons>
+          </LoginButton>
+          {isModalShown && (
+            <LoginModal
+              handleSubmit={handleSubmit}
+              isNotFound={isNotFound}
+              setModalShown={setModalShown}
+              isModalShown={isModalShown}
+            />
+          )}
+        </UserContainer>
       </FlexWrapper>
     );
   } else {
     return (
       <FlexWrapper>
-        <UserProfilPhoto
-          publicId={user.userPictureSrc}
-          alt={`Profilphoto of ${user.userName}`}
-        />
-        <p>{user.userName}</p>
-        <KarmaAccount>{user.karmaAccount} Karmapoints</KarmaAccount>
-        <LoginButton
-          onClick={() => {
-            setUser({ id: 0, loggedIn: false });
-            router.push("/");
-          }}
-        >
-          <Icons variant="lockClosed">Logout</Icons>
-        </LoginButton>
+        <UserContainer>
+          <UserProfilPhoto
+            publicId={user.userPictureSrc}
+            alt={`Profilphoto of ${user.userName}`}
+          />
+          <p>{user.userName}</p>
+          <KarmaAccount>{user.karmaAccount} Karmapoints</KarmaAccount>
+          <LoginButton
+            onClick={() => {
+              setUser({ id: 0, loggedIn: false });
+              router.push("/");
+            }}
+          >
+            <Icons variant="lockClosed" color="#f6bb32">
+              Logout
+            </Icons>
+          </LoginButton>
+        </UserContainer>
       </FlexWrapper>
     );
   }
 }
 
 const FlexWrapper = styled.div`
+  box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+`;
+
+const UserContainer = styled.div`
   display: flex;
   font-weight: bold;
   align-items: center;
-  margin: 1rem 1rem 0 1rem;
   gap: 0.5rem;
+  padding: 1rem 1rem 1rem 1rem;
 `;
 
 const UserProfilPhoto = styled(Image)`
-  border-radius: 25px;
+  border-radius: 50% 50% 50% 50% / 85% 85% 15% 15%;
   margin-right: 0.5rem;
   width: 50px;
   height: 50px;
@@ -92,5 +104,5 @@ const UserProfilPhoto = styled(Image)`
 `;
 
 const KarmaAccount = styled.p`
-  margin-left: 2rem;
+  margin-left: 1rem;
 `;

@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import { Image } from "cloudinary-react";
 import Icons from "../../../../components/Icons";
+import Image from "next/image";
 
 export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
   const router = useRouter();

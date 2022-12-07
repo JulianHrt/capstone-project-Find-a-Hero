@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { fetcher } from "../../../../helpers/api";
 import AddAd from "../../../../components/AddAd";
+import Image from "next/image";
 
 export default function editpage() {
   const currentDate = new Date();

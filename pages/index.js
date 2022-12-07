@@ -7,7 +7,6 @@ export default function Home() {
   return (
     <>
       <Image publicId="hero-150x150_guzfn0"></Image>
-
       <h1>
         Welcome to <span>Find a Hero!</span>
       </h1>

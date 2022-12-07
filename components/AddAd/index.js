@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { categories } from "../../helpers/categories";
 import { Image } from "cloudinary-react";
 import Icons from "../Icons";
@@ -44,53 +44,55 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
             id="adPictureSrc"
           ></StyledUpload>
         </StyledLabelForUpload>
-        <label htmlFor="adTitle">
-          *type in your adtitle:
-          <input
+        <InputContainer>
+          <StyledInput
             type="text"
             name="adTitle"
             id="adTitle"
             pattern=".*[\S]+.*"
+            placeholder=" "
             defaultValue={inputValue === undefined ? "" : inputValue.adTitle}
             required
-          ></input>
-        </label>
-        <label htmlFor="adDescription">
-          what can make you done?
-          <textarea
+          ></StyledInput>
+          <StyledLabel htmlFor="adTitle">*your adtitle</StyledLabel>
+        </InputContainer>
+        <InputContainer>
+          <StyledTextArea
             type="text"
             name="adDescription"
             id="adDescription"
+            placeholder=" "
             pattern=".*[\S]+.*"
             defaultValue={
-              inputValue === undefined
-                ? "I can be a Hero in ..."
-                : inputValue.adDescription
+              inputValue === undefined ? "" : inputValue.adDescription
             }
             minLength={5}
-            rows={4}
-          ></textarea>
-        </label>
-        <label htmlFor="adCosts">
-          *costs of your ad:
-          <input
+            rows={5}
+          ></StyledTextArea>
+          <StyledLabel desc htmlFor="adDescription">
+            I can be a Hero in ...
+          </StyledLabel>
+        </InputContainer>
+        <InputContainer>
+          <StyledInput
             type="number"
             name="adCosts"
             id="adCosts"
+            placeholder=" "
             defaultValue={inputValue === undefined ? "" : inputValue.adCosts}
             required
-          ></input>
-        </label>
+          ></StyledInput>
+          <StyledLabel htmlFor="adCosts">*costs of your ad</StyledLabel>{" "}
+        </InputContainer>
         <label htmlFor="category">
-          *category:
-          <select
+          <StyledSelect
             type="text"
             name="category"
             id="category"
             defaultValue={inputValue === undefined ? "" : inputValue.category}
             required
           >
-            <option value="">---select a category for your ad---</option>
+            <option value="">---*select a category for your ad---</option>
             {categories.map((category) => {
               return (
                 <option key={category} value={category}>
@@ -98,20 +100,21 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
                 </option>
               );
             })}
-          </select>
+          </StyledSelect>
         </label>
-        <label htmlFor="tags">
-          *describing tags for your ad:{" "}
-          <StyledInfo>(type in without "#" and split with ",")</StyledInfo>
-          <input
+        <InputContainer>
+          <StyledInput
             type="text"
             name="tags"
+            placeholder=" "
             id="tags"
             pattern=".*[\S]+.*"
             defaultValue={inputValue === undefined ? "" : inputValue.tags}
             required
-          ></input>
-        </label>
+          ></StyledInput>
+          <StyledLabel htmlFor="tags">*describing tags</StyledLabel>
+          <StyledInfo>(type in without "#" and split with ",")</StyledInfo>
+        </InputContainer>
       </StyledContainer>
       <FlexWrapper>
         <StyledButton onClick={onGoBack}>
@@ -145,6 +148,7 @@ const StyledForm = styled.form`
     border: 1px solid #5684bf;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-size: 1rem;
   }
 `;
 
@@ -202,4 +206,73 @@ const StyledLabelForUpload = styled.label`
   border: 1px solid #5684bf;
   border-radius: 5px;
   padding: 1rem 0.5rem 0.5rem 0.5rem;
+`;
+
+const InputContainer = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
+const StyledInput = styled.input`
+  border: 1px solid #8c8c8c;
+  border-radius: 5px;
+  padding: 1rem;
+  &:focus {
+    outline: none;
+    border: 2px solid #5684bf;
+  }
+  &:focus + label {
+    color: #5684bf;
+  }
+  &:focus + label,
+  &:not(:placeholder-shown) + label {
+    height: fit-content;
+    font-size: 12px;
+    transform: translate(0, -50%);
+    background: #ffffff;
+    width: fit-content;
+    transition: all 0.2s ease-out;
+    padding: 0.25rem;
+    top: 0;
+  }
+`;
+const StyledTextArea = styled.textarea`
+  border: 1px solid #8c8c8c;
+  border-radius: 5px;
+  padding: 1rem;
+  &:focus {
+    outline: none;
+    border: 2px solid #5684bf;
+  }
+  &:focus + label {
+    color: #5684bf;
+  }
+  &:focus + label,
+  &:not(:placeholder-shown) + label {
+    height: fit-content;
+    font-size: 12px;
+    top: 0;
+    transform: translate(0, -50%);
+    background: #ffffff;
+    transition: all 0.2s ease-out;
+    padding: 0.25rem;
+    width: fit-content;
+  }
+`;
+
+const StyledLabel = styled.label`
+  position: absolute;
+  top: 16px;
+  bottom: 0;
+  left: 16px;
+  pointer-events: none;
+  transition: all 0.2s ease-out;
+`;
+
+const StyledSelect = styled.select`
+  padding: 1rem;
+  &:focus {
+    outline: none;
+    border: 2px solid #5684bf;
+  }
 `;

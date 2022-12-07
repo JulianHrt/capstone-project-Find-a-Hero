@@ -6,9 +6,8 @@ import { categories } from "../helpers/categories";
 export default function Home() {
   return (
     <>
-      <AnimationContainer>
-        <Image publicId="hero-150x150_guzfn0"></Image>
-      </AnimationContainer>
+      <Image publicId="hero-150x150_guzfn0"></Image>
+
       <h1>
         Welcome to <span>Find a Hero!</span>
       </h1>
@@ -27,13 +26,6 @@ export default function Home() {
     </>
   );
 }
-
-const AnimationContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background-image: url("https://res.cloudinary.com/dhi2fh33d/image/upload/v1670413916/stars-150x150_lg3fda.gif");
-`;
 
 const FlexWrapper = styled.div`
   display: flex;

@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { fetcher } from "../../helpers/api";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { Image } from "cloudinary-react";
 
 export default function AdListPage({ setLastSearched }) {
   const Router = useRouter();
@@ -16,7 +17,13 @@ export default function AdListPage({ setLastSearched }) {
 
   if (error) return <h1>...sorry cannot load ads</h1>;
 
-  if (!ads) return <h1>...please wait while loading...</h1>;
+  if (!ads)
+    return (
+      <>
+        <h1>...please wait while loading...</h1>
+        <Image publicId="hero-150x150_guzfn0" />
+      </>
+    );
 
   const AdsFilterByCategory = ads.filter((ad) => {
     return ad.category === category;

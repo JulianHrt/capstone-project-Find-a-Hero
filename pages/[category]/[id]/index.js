@@ -22,7 +22,13 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
 
   if (error) return <h1>...sorry cannot load ad details</h1>;
 
-  if (!ad) return <h1>...please wait while loading...</h1>;
+  if (!ad)
+    return (
+      <>
+        <h1>...please wait while loading...</h1>
+        <Image publicId="hero-150x150_guzfn0" />
+      </>
+    );
 
   async function deleteAd() {
     await fetch(`/api/listing/${id}`, {

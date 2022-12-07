@@ -13,7 +13,13 @@ export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
 
   if (error) return <h1>... sorry cannot load contact data</h1>;
 
-  if (!ad) return <h1>... please wait while loading ...</h1>;
+  if (!ad)
+    return (
+      <>
+        <h1>...please wait while loading...</h1>
+        <Image publicId="hero-150x150_guzfn0" />
+      </>
+    );
 
   function goBack() {
     setadIsPaid({ id: null, paid: false });

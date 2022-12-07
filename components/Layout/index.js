@@ -15,7 +15,7 @@ export default function Layout({ children, lastSearched, isUser, setUser }) {
 const MainFlexWrapper = styled.main`
   display: flex;
   flex-direction: column;
-  margin: 1.5rem 1.5rem 4rem 1.5rem;
+  margin: 1.5rem 1.5rem 5rem 1.5rem;
   align-items: center;
 
   span {

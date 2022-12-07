@@ -136,7 +136,7 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
             return <TagItem key={tag}>#{tag}</TagItem>;
           })}
         </TagsList>
-        <p>Costs: {ad.adCosts} Karmapoints</p>
+        <p>Costs: {ad.adCosts} Karmacoins</p>
       </Attributes>
       <FlexWrapper>
         <StyledLink href={`/${category}`}>
@@ -148,11 +148,11 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
           <StyledButton type="button" onClick={BookAd}>
             {enoughtPoints ? (
               <Icons variant="book" color="#000000">
-                Book now for {ad.adCosts} Karmapoints
+                Book now for {ad.adCosts} Karmacoins
               </Icons>
             ) : (
               <Icons variant="close" color="#ea5455">
-                Sorry you dont have enough Karmapoints
+                Sorry you dont have enough Karmacoins
               </Icons>
             )}
           </StyledButton>

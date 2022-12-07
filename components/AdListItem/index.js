@@ -36,7 +36,7 @@ export default function AdListItem({
         </ImageContainer>
 
         <h2>{adTitle}</h2>
-        <Costs>for {adCosts} Karmapoints</Costs>
+        <Costs>for {adCosts} Karmacoins</Costs>
 
         <TagsList>
           {tags.map((tag) => {

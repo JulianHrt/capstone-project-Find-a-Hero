@@ -64,7 +64,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
             pattern=".*[\S]+.*"
             defaultValue={
               inputValue === undefined
-                ? "I can be a hero in ..."
+                ? "I can be a Hero in ..."
                 : inputValue.adDescription
             }
             minLength={5}

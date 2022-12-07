@@ -67,7 +67,7 @@ export default function Header({ setUser, isUser }) {
           />
           <p>{user.userName}</p>
           <KarmaAccount>
-            {user.karmaAccount} Karmapoints
+            {user.karmaAccount} Karmacoins
             <YingYang publicId="icons8-yin-yang-30_qooc3s"></YingYang>
           </KarmaAccount>
           <LoginButton

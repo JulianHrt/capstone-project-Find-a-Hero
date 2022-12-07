@@ -38,7 +38,9 @@ export default function AdListPage({ setLastSearched }) {
 
   return (
     <>
-      <h1>I found {heroCounter} Heroes for you:</h1>
+      <h2>
+        I found {heroCounter} {heroCounter === 1 ? "Hero" : "Heroes"} for you:
+      </h2>
       {sortedAds.map((ad) => {
         return (
           <AdListItem

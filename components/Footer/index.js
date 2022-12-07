@@ -13,7 +13,7 @@ export default function Footer({ lastSearched, isUser }) {
           variant="search"
           color={pathname === "/" ? "#5684BF" : "#8C8C8C"}
         >
-          look for heroes
+          look for Heroes
         </Icons>
       </StyledLink>
       <StyledLink

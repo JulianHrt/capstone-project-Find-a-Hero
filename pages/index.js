@@ -21,8 +21,8 @@ export default function Home() {
           );
         })}
       </FlexWrapper>
-      <h2>or get inspired</h2>
-      <StyledCategoryLink href="/all">show me all heroes</StyledCategoryLink>
+      <h2>get inspired</h2>
+      <StyledCategoryLink href="/all">show me all Heroes</StyledCategoryLink>
     </>
   );
 }
@@ -30,6 +30,7 @@ export default function Home() {
 const FlexWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.25rem;
 `;
 
@@ -38,7 +39,7 @@ const StyledCategoryLink = styled(Link)`
   width: auto;
   text-decoration: none;
   padding: 0.5rem;
-  margin: 0.25rem;
+  margin-right: 0.25rem;
   color: #ffffff;
   font-weight: bold;
   border-radius: 10px;

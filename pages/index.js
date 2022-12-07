@@ -44,10 +44,8 @@ const StyledCategoryLink = styled(Link)`
   text-decoration: none;
   padding: 0.5rem;
   margin: 0.25rem;
-  color: #342f66;
+  color: #ffffff;
   font-weight: bold;
   border-radius: 10px;
-  border: 0.5px solid #342f66;
-  background: #ffffff;
-  box-shadow: 1px 1px 1px #342f66, -1px -1px 1px #342f66;
+  background: #5684bf;
 `;

@@ -8,6 +8,6 @@ const StyledButton = styled.button`
   border: none;
   margin-left: auto;
   margin-right: 0;
-  color: #342f66;
+  color: #5684bf;
   text-align: center;
 `;

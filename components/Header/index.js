@@ -42,7 +42,7 @@ export default function Header({ setUser, isUser }) {
         <UserContainer>
           <p>Please log in to be a Hero!</p>
           <LoginButton onClick={() => setModalShown(!isModalShown)}>
-            <Icons variant="lockOpen" color="#342F66">
+            <Icons variant="lockOpen" color="#8C8C8C">
               Login
             </Icons>
           </LoginButton>
@@ -66,14 +66,17 @@ export default function Header({ setUser, isUser }) {
             alt={`Profilphoto of ${user.userName}`}
           />
           <p>{user.userName}</p>
-          <KarmaAccount>{user.karmaAccount} Karmapoints</KarmaAccount>
+          <KarmaAccount>
+            {user.karmaAccount} Karmapoints
+            <YingYang publicId="icons8-yin-yang-30_qooc3s"></YingYang>
+          </KarmaAccount>
           <LoginButton
             onClick={() => {
               setUser({ id: 0, loggedIn: false });
               router.push("/");
             }}
           >
-            <Icons variant="lockClosed" color="#f6bb32">
+            <Icons variant="lockClosed" color="#5684bf">
               Logout
             </Icons>
           </LoginButton>
@@ -97,12 +100,18 @@ const UserContainer = styled.div`
 
 const UserProfilPhoto = styled(Image)`
   border-radius: 50% 50% 50% 50% / 85% 85% 15% 15%;
-  margin-right: 0.5rem;
   width: 50px;
   height: 50px;
   object-fit: cover;
 `;
 
 const KarmaAccount = styled.p`
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const YingYang = styled(Image)`
+  width: 18px;
+  height: 18px;
 `;

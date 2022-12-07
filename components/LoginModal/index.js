@@ -80,7 +80,7 @@ const StyledButton = styled.button`
   border: none;
   padding: 1.5rem;
   min-width: 40%;
-  color: #342f66;
+  color: #5684bf;
   text-align: center;
 `;
 

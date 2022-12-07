@@ -17,6 +17,13 @@ export default function AdListItem({
   return (
     <LinkToDetailspage href={`/${category}/${id}`}>
       <StyledArticle>
+        <UserContainer>
+          <UserProfilPhoto
+            publicId={userPictureSrc}
+            alt={`Profilphoto of ${userName}`}
+          />
+          <h3>{userName}</h3>
+        </UserContainer>
         <ImageContainer>
           <Adtitlepictures
             publicId={
@@ -29,15 +36,8 @@ export default function AdListItem({
         </ImageContainer>
 
         <h2>{adTitle}</h2>
-
-        <UserContainer>
-          <UserProfilPhoto
-            publicId={userPictureSrc}
-            alt={`Profilphoto of ${userName}`}
-          />
-          <p>{userName}</p>
-        </UserContainer>
         <Costs>for {adCosts} Karmapoints</Costs>
+
         <TagsList>
           {tags.map((tag) => {
             return <TagItem key={tag}>#{tag}</TagItem>;
@@ -62,14 +62,17 @@ const StyledArticle = styled.article`
   width: 85vw;
   margin-bottom: 1rem;
   border-radius: 10px;
-  box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+  box-shadow: 2px 2px 5px 3px rgba(150, 138, 144, 0.2);
 `;
 
 const UserContainer = styled.section`
   display: flex;
   gap: 1rem;
+  margin: 1rem;
   font-weight: bold;
   align-items: center;
+  align-self: start;
+  width: 100%;
 `;
 
 const UserProfilPhoto = styled(Image)`
@@ -86,6 +89,8 @@ const DateContainer = styled.p`
 
 const Costs = styled.p`
   font-weight: bold;
+  margin-top: 0;
+  margin-bottom: 1rem;
 `;
 
 const LinkToDetailspage = styled(Link)`
@@ -94,7 +99,8 @@ const LinkToDetailspage = styled(Link)`
 
   h2 {
     text-align: center;
-    color: #342f66;
+    color: #5684bf;
+    margin: 1rem 1rem 0.25rem 1rem;
   }
 `;
 
@@ -102,8 +108,6 @@ const Adtitlepictures = styled(Image)`
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 `;
 
 const TagsList = styled.ul`
@@ -112,12 +116,12 @@ const TagsList = styled.ul`
   list-style: none;
   gap: 0.5rem;
   padding: 0;
-  margin: 0;
+  margin: 1rem 1rem 0.25rem 1rem;
 `;
 
 const TagItem = styled.li`
   border-radius: 10px;
-  border: 1px solid #342f66;
+  border: 2px solid #5684bf;
   padding: 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;

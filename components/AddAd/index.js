@@ -35,7 +35,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
           <Adtitlepictures publicId={inputValue.adPictureSrc}></Adtitlepictures>
         )}
         <StyledLabelForUpload htmlFor="adPictureSrc">
-          <Icons variant="upload" color="#342F66">
+          <Icons variant="upload" color="#5684bf">
             upload a new title picture
           </Icons>
           <StyledUpload
@@ -142,7 +142,7 @@ const StyledForm = styled.form`
   textarea,
   select {
     border-radius: 5px;
-    border: 1px solid #342f66;
+    border: 1px solid #5684bf;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
@@ -153,7 +153,7 @@ const StyledButton = styled.button`
   border: none;
   padding: 0.5rem;
   min-width: 40%;
-  color: #342f66;
+  color: #5684bf;
   text-align: center;
 `;
 
@@ -199,7 +199,7 @@ const StyledUpload = styled.input`
 `;
 
 const StyledLabelForUpload = styled.label`
-  border: 1px solid #342f66;
+  border: 1px solid #5684bf;
   border-radius: 5px;
   padding: 1rem 0.5rem 0.5rem 0.5rem;
 `;

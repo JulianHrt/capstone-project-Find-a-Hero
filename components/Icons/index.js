@@ -67,5 +67,6 @@ const IconContainer = styled.div`
     font-size: 0.75rem;
     margin-top: 0;
     text-transform: capitalize;
+    color: ${({ color }) => color};
   }
 `;

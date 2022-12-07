@@ -92,7 +92,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
             defaultValue={inputValue === undefined ? "" : inputValue.category}
             required
           >
-            <option value="">---*select a category for your ad---</option>
+            <option value="">*select a category for your ad</option>
             {categories.map((category) => {
               return (
                 <option key={category} value={category}>

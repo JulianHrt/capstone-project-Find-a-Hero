@@ -59,16 +59,14 @@ const StyledModal = styled.div`
   z-index: 10;
   background-color: white;
   padding: 2rem 0 0 0;
-  box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+  box-shadow: 2px 2px 5px 3px rgba(150, 138, 144, 0.2);
 `;
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-size: 1rem;
+  font-weight: 400;
 `;
 
 const StyledButton = styled.button`
@@ -100,8 +98,9 @@ const InputContainer = styled.div`
 `;
 
 const StyledInput = styled.input`
-  border: 1px solid #8c8c8c;
+  border: 1px solid #5684bf;
   padding: 1rem;
+
   &:focus {
     outline: none;
     border: 2px solid #5684bf;

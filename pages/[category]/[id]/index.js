@@ -292,7 +292,7 @@ const StyledModal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+  box-shadow: 2px 2px 5px 3px rgba(150, 138, 144, 0.2);
 `;
 
 const ButtonWrapper = styled.div`

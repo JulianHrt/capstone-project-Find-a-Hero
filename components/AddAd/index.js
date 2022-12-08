@@ -78,6 +78,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
             type="number"
             name="adCosts"
             id="adCosts"
+            min="1"
             placeholder=" "
             defaultValue={inputValue === undefined ? "" : inputValue.adCosts}
             required

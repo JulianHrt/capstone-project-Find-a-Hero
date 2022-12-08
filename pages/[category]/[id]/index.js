@@ -246,6 +246,7 @@ const StyledButton = styled.button`
 const TagsList = styled.ul`
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
   list-style: none;
   gap: 0.5rem;
   padding: 0;

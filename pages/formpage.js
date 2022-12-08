@@ -28,7 +28,7 @@ export default function formpage({ isUser }) {
     <>
       {isUser.loggedIn ? (
         <>
-          <h1>Be a Hero for the community</h1>
+          <h2>Be a Hero for the community</h2>
           <AddAd onSubmit={sendAd} onGoBack={() => router.back()} />
         </>
       ) : (

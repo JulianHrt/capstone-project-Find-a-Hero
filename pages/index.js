@@ -1,18 +1,12 @@
 import styled from "styled-components";
 import Link from "next/link";
-import Image from "next/image";
+import { Image } from "cloudinary-react";
 import { categories } from "../helpers/categories";
 
 export default function Home() {
   return (
     <>
-      <Image
-        src="/images/super-hero.gif"
-        width={300}
-        height={300}
-        alt="Animation of Hero flying"
-        priority
-      ></Image>
+      <Image publicId="hero-150x150_guzfn0"></Image>
       <h1>
         Welcome to <span>Find a Hero!</span>
       </h1>
@@ -26,8 +20,8 @@ export default function Home() {
           );
         })}
       </FlexWrapper>
-      <h2>or get inspired</h2>
-      <StyledCategoryLink href="/all">show me all heroes</StyledCategoryLink>
+      <h2>get inspired</h2>
+      <StyledCategoryLink href="/all">show me all Heroes</StyledCategoryLink>
     </>
   );
 }
@@ -35,17 +29,18 @@ export default function Home() {
 const FlexWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.25rem;
 `;
 
 const StyledCategoryLink = styled(Link)`
-  background-color: white;
-  border: 1px solid black;
   height: 40px;
   width: auto;
   text-decoration: none;
-  color: black;
-
-  border-radius: 5px;
   padding: 0.5rem;
+  margin-right: 0.25rem;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 10px;
+  background: #5684bf;
 `;

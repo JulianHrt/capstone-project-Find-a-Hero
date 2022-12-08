@@ -22,7 +22,13 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
 
   if (error) return <h1>...sorry cannot load ad details</h1>;
 
-  if (!ad) return <h1>...please wait while loading...</h1>;
+  if (!ad)
+    return (
+      <>
+        <h1>...please wait while loading...</h1>
+        <Image publicId="hero-150x150_guzfn0" />
+      </>
+    );
 
   async function deleteAd() {
     await fetch(`/api/listing/${id}`, {
@@ -56,7 +62,7 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
             <StyledButton
               onClick={() => router.push(`/${category}/${id}/editpage/`)}
             >
-              <Icons variant="edit" color="black">
+              <Icons variant="edit" color="#000000">
                 edit
               </Icons>
             </StyledButton>
@@ -64,7 +70,7 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
               type="button"
               onClick={() => setModalShown(!isModalShown)}
             >
-              <Icons variant="delete" color="black">
+              <Icons variant="delete" color="#000000">
                 delete
               </Icons>
             </StyledButton>
@@ -98,7 +104,7 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
               type="button"
               onClick={() => setModalShown(!isModalShown)}
             >
-              <Icons variant="close" color="red">
+              <Icons variant="close" color="#ea5455">
                 {" "}
                 no
               </Icons>
@@ -130,26 +136,28 @@ export default function AdDetailsPage({ isUser, setadIsPaid }) {
             return <TagItem key={tag}>#{tag}</TagItem>;
           })}
         </TagsList>
-        <p>Costs: {ad.adCosts} Karmapoints</p>
+        <p>Costs: {ad.adCosts} Karmacoins</p>
       </Attributes>
       <FlexWrapper>
         <StyledLink href={`/${category}`}>
-          <Icons variant="back">go back</Icons>
+          <Icons variant="back" color="#000000">
+            go back
+          </Icons>
         </StyledLink>
         {isUser.loggedIn && isUser.id !== ad.userId ? (
           <StyledButton type="button" onClick={BookAd}>
             {enoughtPoints ? (
-              <Icons variant="book">
-                Book now for {ad.adCosts} Karmapoints
+              <Icons variant="book" color="#000000">
+                Book now for {ad.adCosts} Karmacoins
               </Icons>
             ) : (
-              <Icons variant="close" color="red">
-                Sorry you dont have enough Karmapoints
+              <Icons variant="close" color="#ea5455">
+                Sorry you dont have enough Karmacoins
               </Icons>
             )}
           </StyledButton>
         ) : isUser.id !== ad.userId ? (
-          <Icons variant="close" color="red">
+          <Icons variant="close" color="#ea5455">
             Please login to book this hero!
           </Icons>
         ) : (
@@ -164,28 +172,30 @@ const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   position: relative;
-  box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+  box-shadow: 2px 2px 5px 3px rgba(150, 138, 144, 0.2);
   width: 85vw;
+  border-radius: 10px;
 `;
 
 const UserContainer = styled.section`
   display: flex;
   font-weight: bold;
   align-items: center;
-  padding: 0 1rem 0 1rem;
+  padding: 1rem;
 `;
 
 const AdTitle = styled.h3`
   align-self: center;
   padding: 0 1rem 0 1rem;
+  color: #5684bf;
 `;
 
-const UserName = styled.h2`
+const UserName = styled.h3`
   text-align: center;
 `;
 
 const UserProfilPhoto = styled(Image)`
-  border-radius: 25px;
+  border-radius: 50% 50% 50% 50% / 85% 85% 15% 15%;
   margin-right: 0.5rem;
   width: 50px;
   height: 50px;
@@ -199,8 +209,8 @@ const ImageContainer = styled.section`
 `;
 
 const Description = styled.section`
-  border-top: 1px solid black;
-  border-bottom: 1px solid black;
+  border-top: 1px solid #8c8c8c;
+  border-bottom: 1px solid #8c8c8c;
   padding: 0 1rem 1rem 1rem;
 
   p {
@@ -220,7 +230,7 @@ const StyledLink = styled(Link)`
   background-color: white;
   text-decoration: none;
   text-align: center;
-  color: black;
+  color: #5684bf;
   padding: 0.5rem;
 `;
 
@@ -229,13 +239,14 @@ const StyledButton = styled.button`
   border: none;
   padding: 0.5rem;
   min-width: 40%;
-  color: black;
+  color: #5684bf;
   text-align: center;
 `;
 
 const TagsList = styled.ul`
   display: flex;
   justify-content: flex-start;
+  flex-wrap: wrap;
   list-style: none;
   gap: 0.5rem;
   padding: 0;
@@ -244,19 +255,21 @@ const TagsList = styled.ul`
 
 const TagItem = styled.li`
   border-radius: 10px;
-  border: 1px solid black;
+  border: 2px solid #5684bf;
   padding: 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;
 `;
 
 const CategoryItem = styled.p`
-  border-radius: 10px;
-  border: 1px solid black;
   padding: 0.5rem;
   font-size: 0.75rem;
   font-weight: bold;
   text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 10px;
+  background: #5684bf;
 `;
 
 const FlexWrapper = styled.section`
@@ -268,7 +281,8 @@ const FlexWrapper = styled.section`
 
 const StyledModal = styled.div`
   position: absolute;
-  top: 18vh;
+  border-radius: 10px;
+  top: 16vh;
   left: 5%;
   right: 5%;
   height: 20%;
@@ -279,7 +293,7 @@ const StyledModal = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+  box-shadow: 2px 2px 5px 3px rgba(150, 138, 144, 0.2);
 `;
 
 const ButtonWrapper = styled.div`

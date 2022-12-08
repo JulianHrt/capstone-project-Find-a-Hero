@@ -10,25 +10,27 @@ export default function LoginModal({
   return (
     <StyledModal>
       <StyledForm onSubmit={handleSubmit}>
-        <label htmlFor="name">
-          Name:
+        <InputContainer>
           <StyledInput
             type="text"
             id="name"
             name="name"
+            placeholder=" "
             pattern=".*[\S]+.*"
             required
           ></StyledInput>
-        </label>
-        <label htmlFor="password">
-          Password:
+          <StyledLabel htmlFor="name">Name</StyledLabel>
+        </InputContainer>
+        <InputContainer>
           <StyledInput
             type="password"
             id="password"
             password="password"
+            placeholder=" "
             required
           ></StyledInput>
-        </label>
+          <StyledLabel htmlFor="password">Password</StyledLabel>
+        </InputContainer>
         <ButtonWrapper>
           <StyledButton type="submit">
             <Icons variant="done" color="green">
@@ -36,7 +38,7 @@ export default function LoginModal({
             </Icons>
           </StyledButton>
           <StyledButton onClick={() => setModalShown(!isModalShown)}>
-            <Icons variant="close" color="red">
+            <Icons variant="close" color="#ea5455">
               close
             </Icons>
           </StyledButton>
@@ -49,29 +51,22 @@ export default function LoginModal({
 
 const StyledModal = styled.div`
   position: absolute;
+  border-radius: 10px;
   top: 18vh;
-  left: 5%;
-  right: 5%;
+  left: 20%;
+  right: 20%;
   height: 40%;
   z-index: 10;
   background-color: white;
-  padding: 0 1rem 0 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-evenly;
-  box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+  padding: 2rem 0 0 0;
+  box-shadow: 2px 2px 5px 3px rgba(150, 138, 144, 0.2);
 `;
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 0.5rem;
   align-items: center;
-  gap: 0.5rem;
-`;
-
-const StyledInput = styled.input`
-  display: block;
+  gap: 1rem;
+  font-weight: 400;
 `;
 
 const StyledButton = styled.button`
@@ -79,7 +74,7 @@ const StyledButton = styled.button`
   border: none;
   padding: 1.5rem;
   min-width: 40%;
-  color: black;
+  color: #5684bf;
   text-align: center;
 `;
 
@@ -87,4 +82,41 @@ const ButtonWrapper = styled.div`
   display: flex;
   align-self: stretch;
   justify-content: space-evenly;
+`;
+
+const StyledLabel = styled.label`
+  position: absolute;
+  top: 16px;
+  bottom: 0;
+  left: 16px;
+  pointer-events: none;
+  transition: all 0.2s ease-out;
+`;
+
+const InputContainer = styled.div`
+  position: relative;
+`;
+
+const StyledInput = styled.input`
+  border: 1px solid #5684bf;
+  padding: 1rem;
+
+  &:focus {
+    outline: none;
+    border: 2px solid #5684bf;
+  }
+  &:focus + label {
+    color: #5684bf;
+  }
+  &:focus + label,
+  &:not(:placeholder-shown) + label {
+    height: fit-content;
+    font-size: 12px;
+    transform: translate(0, -50%);
+    background: #ffffff;
+    width: fit-content;
+    transition: all 0.2s ease-out;
+    padding: 0.25rem;
+    top: 0;
+  }
 `;

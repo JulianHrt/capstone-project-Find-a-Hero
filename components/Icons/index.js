@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const svg = {
   search:
@@ -28,7 +28,7 @@ const svg = {
 
 export default function Icons({ variant, color, children }) {
   return (
-    <IconContainer>
+    <IconContainer color={color} variant={variant}>
       <svg width="24" height="24">
         <path fill={color} d={svg[variant]} />
       </svg>
@@ -41,10 +41,32 @@ const IconContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 9vw;
+  border-bottom: 2px solid ${({ color }) => color};
+
+  ${({ variant }) =>
+    variant === "add" &&
+    css`
+      border: none;
+    `}
+
+  ${({ variant }) =>
+    variant === "search" &&
+    css`
+      border: none;
+    `}
+
+    ${({ variant }) =>
+    variant === "results" &&
+    css`
+      border: none;
+    `}
+
 
   p {
     font-size: 0.75rem;
     margin-top: 0;
     text-transform: capitalize;
+    color: ${({ color }) => color};
   }
 `;

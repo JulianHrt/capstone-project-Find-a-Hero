@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import useSWR from "swr";
 import { fetcher } from "../../../../helpers/api";
 import AddAd from "../../../../components/AddAd";
+import { Image } from "cloudinary-react";
 
 export default function editpage() {
   const currentDate = new Date();
@@ -12,7 +13,13 @@ export default function editpage() {
 
   if (error) return <h1>...sorry cannot load adform data</h1>;
 
-  if (!ad) return <h1>...please wait while loading...</h1>;
+  if (!ad)
+    return (
+      <>
+        <h1>...please wait while loading...</h1>
+        <Image publicId="hero-150x150_guzfn0" />
+      </>
+    );
 
   async function updateAd(ad, publicId) {
     const newAd = {

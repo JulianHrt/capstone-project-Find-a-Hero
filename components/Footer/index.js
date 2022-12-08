@@ -11,9 +11,9 @@ export default function Footer({ lastSearched, isUser }) {
       <StyledLink href="/" active={pathname === "/" ? true : false}>
         <Icons
           variant="search"
-          color={pathname === "/" ? "#BF382C" : "darkblue"}
+          color={pathname === "/" ? "#5684BF" : "#8C8C8C"}
         >
-          look for heroes
+          look for Heroes
         </Icons>
       </StyledLink>
       <StyledLink
@@ -22,7 +22,7 @@ export default function Footer({ lastSearched, isUser }) {
       >
         <Icons
           variant="results"
-          color={pathname.startsWith("/[category]") ? "#BF382C" : "darkblue"}
+          color={pathname.startsWith("/[category]") ? "#5684BF" : "#8C8C8C"}
         >
           last found heroes
         </Icons>
@@ -34,7 +34,7 @@ export default function Footer({ lastSearched, isUser }) {
         >
           <Icons
             variant="add"
-            color={pathname === "/formpage" ? "#BF382C" : "darkblue"}
+            color={pathname === "/formpage" ? "#5684BF" : "#8C8C8C"}
           >
             be a hero
           </Icons>
@@ -49,7 +49,6 @@ const StyledNav = styled.nav`
   justify-content: space-around;
   position: fixed;
   bottom: 0;
-
   width: 100%;
   background-color: white;
   box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
@@ -57,16 +56,16 @@ const StyledNav = styled.nav`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: black;
+  color: #8c8c8c;
   margin-top: 0.5rem;
-
   width: 100%;
-  border-bottom: 4px solid darkblue;
+  border-bottom: 3px solid #5684bf;
 
   ${({ active }) =>
     active &&
     css`
-      border-bottom: 6px solid #bf382c;
+      border-bottom: 8px solid #5684bf;
       transition: 0.5s;
-    `}
+      color: #5684bf;
+    `};
 `;

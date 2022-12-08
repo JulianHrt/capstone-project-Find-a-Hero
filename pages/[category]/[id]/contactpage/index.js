@@ -13,7 +13,13 @@ export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
 
   if (error) return <h1>... sorry cannot load contact data</h1>;
 
-  if (!ad) return <h1>... please wait while loading ...</h1>;
+  if (!ad)
+    return (
+      <>
+        <h1>...please wait while loading...</h1>
+        <Image publicId="hero-150x150_guzfn0" />
+      </>
+    );
 
   function goBack() {
     setadIsPaid({ id: null, paid: false });
@@ -37,7 +43,7 @@ export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
           <StyledContactChannel>via mail</StyledContactChannel>
 
           <StyledLink href={`mailto:${ad.user.userEmail}`}>
-            <Icons variant="mail" color="darkblue">
+            <Icons variant="mail" color="#5684bf">
               {ad.user.userEmail}
             </Icons>
           </StyledLink>
@@ -45,13 +51,15 @@ export default function contactpage({ isUser, adIsPaid, setadIsPaid }) {
           <StyledContactChannel>via phone</StyledContactChannel>
 
           <StyledLink href={`tel:${ad.user.userPhonenumber}`}>
-            <Icons variant="phone" color="darkblue">
-              {ad.user.userPhonenumber}{" "}
+            <Icons variant="phone" color="#5684bf">
+              {ad.user.userPhonenumber}
             </Icons>
           </StyledLink>
 
           <StyledButton onClick={goBack}>
-            <Icons variant="back">go back</Icons>
+            <Icons variant="back" color="#000000">
+              go back
+            </Icons>
           </StyledButton>
         </StyledArticle>
       ) : (
@@ -68,7 +76,8 @@ const StyledArticle = styled.article`
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 2px 2px 5px 1px rgba(150, 138, 144, 0.2);
+  box-shadow: 2px 2px 5px 3px rgba(150, 138, 144, 0.2);
+  border-radius: 10px;
   width: 85vw;
 `;
 
@@ -78,7 +87,7 @@ const UserContainer = styled.section`
   align-items: center;
   align-self: flex-start;
   justify-content: space-between;
-  padding: 0 1rem 0 1rem;
+  padding: 1rem;
 `;
 
 const StyledContactChannel = styled.p`
@@ -87,14 +96,14 @@ const StyledContactChannel = styled.p`
 `;
 
 const UserProfilPhoto = styled(Image)`
-  border-radius: 25px;
+  border-radius: 50% 50% 50% 50% / 85% 85% 15% 15%;
   margin-right: 0.5rem;
   width: 50px;
   height: 50px;
   object-fit: cover;
 `;
 
-const UserName = styled.h2`
+const UserName = styled.h3`
   text-align: center;
   padding: 0 0 0 0.5rem;
 `;
@@ -105,11 +114,11 @@ const StyledButton = styled.button`
   padding: 0.5rem;
   margin-left: 0.5rem;
   margin-right: auto;
-  color: black;
+  color: #5684bf;
   text-align: center;
 `;
 
 const StyledLink = styled.a`
   text-decoration: none;
-  color: darkblue;
+  color: #5684bf;
 `;

@@ -1,6 +1,6 @@
-# My Capstone Project: Find a Hero!
-
 ![]()
+
+# My Capstone Project: Find a Hero!
 
 With my app find a hero you can easily boost your karma account. Just offer what you can do best and what you love to do. Maybe you like to take photos or love baking delicious cakes? Then just earn some karma and use it to get things done that you can't do yourself. At Find a Hero we help each other and benefit from the strengths of the community.
 

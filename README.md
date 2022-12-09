@@ -19,11 +19,15 @@ You can find the hosted version on [Vercel](https://capstone-project-find-a-hero
 - React Hooks
 - React Router
 - React Testing Library / Jest
+- Next.js 
+- Node.js 
 - JavaScript
-- Cloudinary
 - styled-components
 - localStorage
-- npm
+- Cloudinary
+- MongoDB Atlas
+- Mongoose
+- SWR
 - Vercel
 
 ## How to setup?

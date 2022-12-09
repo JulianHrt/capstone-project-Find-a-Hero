@@ -13,7 +13,7 @@ You can find the hosted version on [Vercel](https://capstone-project-find-a-hero
 
 ![A]()
 
-## included Tech Stack
+## Included Tech Stack
 
 - React
 - React Hooks

@@ -9,11 +9,11 @@ With my app find a hero you can easily boost your karma account. Just offer what
 
 You can find the hosted version on [Vercel](https://capstone-project-find-a-hero.vercel.app)
 
-**Important:** This demo is optimized for mobile screen.
+**Important the project is optimized for mobile screen.**
 
 ![A]()
 
-## Tech Stack
+## included Tech Stack
 
 - React
 - React Hooks

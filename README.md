@@ -1,4 +1,4 @@
-## <img src="/public/images/title.png" ></img>
+<img src="/public/images/title.png" ></img>
 
 # My Capstone Project: Find a Hero!
 
@@ -6,7 +6,7 @@ With Find a Hero! you can easily boost your karma account. Just offer what you c
 
 ## Demo:
 
-You can find the hosted version on [Vercel](https://capstone-project-find-a-hero.vercel.app)
+# You can find the hosted version on [Vercel](https://capstone-project-find-a-hero.vercel.app)
 
 **Important the project is optimized for mobile screen.**
 

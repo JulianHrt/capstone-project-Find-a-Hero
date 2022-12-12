@@ -14,7 +14,7 @@ With Find a Hero! you can easily boost your karma account. Just offer what you c
 
 **Important the project is optimized for mobile screen.**
 
-## Included Tech Stack
+# Included Tech Stack
 
 - React
 - React Hooks
@@ -31,7 +31,7 @@ With Find a Hero! you can easily boost your karma account. Just offer what you c
 - SWR
 - Vercel
 
-## How to setup?
+# How to setup?
 
 - Clone this repository
 - Install all dependencies with `$ npm install`

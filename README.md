@@ -4,9 +4,9 @@
 
 With Find a Hero! you can easily boost your karma account. Just offer what you can do best and what you love to do. Maybe you like to take photos or love baking delicious cakes? Then just earn some karma and use it to get things done that you can't do yourself. At Find a Hero we help each other and benefit from the strengths of the community.
 
-## Demo:
+# Demo:
 
-# You can find the hosted version on [Vercel](https://capstone-project-find-a-hero.vercel.app)
+## You can find the hosted version on [Vercel](https://capstone-project-find-a-hero.vercel.app)
 
 **Important the project is optimized for mobile screen.**
 

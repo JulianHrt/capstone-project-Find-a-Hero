@@ -42,6 +42,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
             type="file"
             name="adPictureSrc"
             id="adPictureSrc"
+            role="upload"
           ></StyledUpload>
         </StyledLabelForUpload>
         <InputContainer>
@@ -68,6 +69,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
             }
             minLength={5}
             rows={5}
+            role="adDescription"
           ></StyledTextArea>
           <StyledLabel desc htmlFor="adDescription">
             I can be a Hero in ...
@@ -78,6 +80,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
             type="number"
             name="adCosts"
             id="adCosts"
+            role="adCosts"
             min="1"
             placeholder=" "
             defaultValue={inputValue === undefined ? "" : inputValue.adCosts}
@@ -87,6 +90,7 @@ export default function AddAd({ onSubmit, inputValue, onGoBack }) {
         </InputContainer>
         <label htmlFor="category">
           <StyledSelect
+            role="category"
             type="text"
             name="category"
             id="category"

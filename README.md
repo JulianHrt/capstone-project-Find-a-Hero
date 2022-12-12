@@ -1,5 +1,3 @@
-![Logo](/public/images/Logo.svg)
-
 # My Capstone Project: Find a Hero!
 
 With Find a Hero! you can easily boost your karma account. Just offer what you can do best and what you love to do. Maybe you like to take photos or love baking delicious cakes? Then just earn some karma and use it to get things done that you can't do yourself. At Find a Hero we help each other and benefit from the strengths of the community.
@@ -10,9 +8,9 @@ You can find the hosted version on [Vercel](https://capstone-project-find-a-hero
 
 **Important the project is optimized for mobile screen.**
 
-![demo1](/public/images/demo1.png)
-![demo1](/public/images/demo2.png)
-![demo1](/public/images/demo3.png)
+<img src="/public/images/demo1.png" ></img>
+<img src="/public/images/demo2.png"></img>
+<img src="/public/images/demo3.png"></img>
 
 ## Included Tech Stack
 
